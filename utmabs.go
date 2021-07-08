@@ -1,7 +1,7 @@
 package main
 
 import (
-	"example.com/convert"
+	"example.com/utmabs/convert"
 	"example.com/utmabs/morestrings"
 	"fmt"
 	"log"
