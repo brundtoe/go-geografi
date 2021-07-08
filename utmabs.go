@@ -21,7 +21,7 @@ func main() {
 
 	ka := strings.Split(koordCsv, ";")
 
-	koord := convert.Mgrs{ka[0], ka[1], ka[2], ka[3], ka[4], ka[5]}
+	koord := convert.Mgrs{Zone: ka[0], Belt: ka[1], Kmkv: ka[2], East: ka[3], North: ka[4], Town: ka[5]}
 
 	result, err := convert.UtmAbs(koord)
 
