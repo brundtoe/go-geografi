@@ -2,6 +2,7 @@ package main
 
 import (
 	"example.com/convert"
+	"example.com/utmabs/morestrings"
 	"fmt"
 	"log"
 	"strings"
@@ -38,4 +39,7 @@ func main() {
 	fmt.Printf("easting %.0f\t", result.Easting)
 	fmt.Printf("northing %.0f\n", result.Northing)
 
+	res := morestrings.ReverseRunes("jensen")
+	fmt.Println("Jensen ", res)
+	fmt.Println("Message", morestrings.Hello())
 }
