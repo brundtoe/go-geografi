@@ -1,3 +1,5 @@
+// Package cities
+// indlæsning af filen cites.csv og print til stdout
 package main
 
 import (

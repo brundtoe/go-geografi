@@ -1,6 +1,4 @@
-package convert
-
-// UTM.c
+// Package convert
 
 // Original Javascript by Chuck Taylor
 // Port to C++ by Alex Hajnal
@@ -16,6 +14,8 @@ package convert
 // "The C++ source code in UTM.cpp and UTM.h may be copied and reused without restriction."
 //
 // 1) http://home.hiwaay.net/~taylorc/toolbox/geography/geoutm.html
+
+package convert
 
 import "math"
 
