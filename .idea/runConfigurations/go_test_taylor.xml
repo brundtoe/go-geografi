@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="go test taylor" type="GoTestRunConfiguration" factoryName="Go Test">
+    <module name="geografi" />
+    <working_directory value="$PROJECT_DIR$/pkg/taylor" />
+    <root_directory value="$PROJECT_DIR$" />
+    <kind value="PACKAGE" />
+    <package value="example.com/geografi/pkg/taylor" />
+    <directory value="$PROJECT_DIR$" />
+    <filePath value="$PROJECT_DIR$" />
+    <framework value="gotest" />
+    <method v="2" />
+  </configuration>
+</component>

@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="go test utmabs" type="GoTestRunConfiguration" factoryName="Go Test">
+    <module name="geografi" />
+    <working_directory value="$PROJECT_DIR$/pkg/utmabs" />
+    <root_directory value="$PROJECT_DIR$" />
+    <kind value="PACKAGE" />
+    <package value="example.com/geografi/pkg/utmabs" />
+    <directory value="$PROJECT_DIR$" />
+    <filePath value="$PROJECT_DIR$" />
+    <framework value="gotest" />
+    <method v="2" />
+  </configuration>
+</component>
