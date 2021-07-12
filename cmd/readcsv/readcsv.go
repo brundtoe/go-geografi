@@ -3,7 +3,7 @@ package main
 
 import (
 	"encoding/csv"
-	"example.com/utmabs/convert"
+	"example.com/geografi/convert"
 	"fmt"
 	"io"
 	"log"

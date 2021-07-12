@@ -1,7 +1,7 @@
 package main
 
 import (
-	"example.com/utmabs/convert"
+	"example.com/geografi/convert"
 	"fmt"
 	"math"
 )

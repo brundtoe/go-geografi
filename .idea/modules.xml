@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/utmabs.iml" filepath="$PROJECT_DIR$/.idea/utmabs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/geografi.iml" filepath="$PROJECT_DIR$/.idea/geografi.iml" />
     </modules>
   </component>
 </project>

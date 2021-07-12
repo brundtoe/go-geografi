@@ -1,7 +1,7 @@
 package main
 
 import (
-	"example.com/utmabs/morestrings"
+	"example.com/geografi/morestrings"
 	"fmt"
 )
 
