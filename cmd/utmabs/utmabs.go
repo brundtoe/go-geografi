@@ -1,7 +1,7 @@
 package main
 
 import (
-	"example.com/geografi/convert/utmabs"
+	"example.com/geografi/pkg/utmabs"
 	"fmt"
 	"log"
 	"strings"

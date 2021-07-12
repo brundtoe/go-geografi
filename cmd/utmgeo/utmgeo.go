@@ -1,7 +1,7 @@
 package main
 
 import (
-	"example.com/geografi/convert/taylor"
+	"example.com/geografi/pkg/taylor"
 	"fmt"
 	"math"
 )

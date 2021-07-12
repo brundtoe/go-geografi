@@ -3,7 +3,7 @@ package main
 
 import (
 	"encoding/csv"
-	"example.com/geografi/convert/utmabs"
+	"example.com/geografi/pkg/utmabs"
 	"fmt"
 	"io"
 	"log"

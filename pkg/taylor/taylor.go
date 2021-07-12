@@ -7,7 +7,7 @@
 // *** For 64-bit double-precision edit UTM.h: undefine FLOAT_32 and define FLOAT_64
 //
 // This is a simple port of the code on the Geographic/UTM Coordinate Converter (1) page from Javascript to C++.
-// Using this you can easily convert between UTM and WGS84 (latitude and longitude).
+// Using this you can easily pkg between UTM and WGS84 (latitude and longitude).
 // Accuracy seems to be around 50cm (I suspect rounding errors are limiting precision).
 // This code is provided as-is and has been minimally tested enjoy but use at your own risk!
 // The license for UTM.cpp and UTM.h is the same as the original Javascript:
@@ -146,7 +146,7 @@ func FootpointLatitude(y float64) float64 {
 // MapLatLonToXY
 // Converts a latitude/longitude pair to x and y coordinates in the
 // Transverse Mercator projection.  Note that Transverse Mercator is not
-// the same as UTM a scale factor is required to convert between them.
+// the same as UTM a scale factor is required to pkg between them.
 //
 // Reference: Hoffmann-Wellenhof, B., Lichtenegger, H., and Collins, J.,
 // GPS: Theory and Practice, 3rd ed.  New York: Springer-Verlag Wien, 1994.
@@ -214,7 +214,7 @@ func MapLatLonToXY(phi float64, lambda float64, lambda0 float64) (float64, float
 // MapXYToLatLon
 // Converts x and y coordinates in the Transverse Mercator projection to
 // a latitude/longitude pair.  Note that Transverse Mercator is not
-// the same as UTM a scale factor is required to convert between them.
+// the same as UTM a scale factor is required to pkg between them.
 //
 // Reference: Hoffmann-Wellenhof, B., Lichtenegger, H., and Collins, J.,
 //   GPS: Theory and Practice, 3rd ed.  New York: Springer-Verlag Wien, 1994.
