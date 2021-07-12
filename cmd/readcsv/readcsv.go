@@ -1,4 +1,4 @@
-// read a csv formated file cities.csv
+// Read a csv formated file cities.csv and convert from MGRS to UTM
 package main
 
 import (

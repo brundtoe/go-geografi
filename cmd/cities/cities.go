@@ -1,5 +1,6 @@
 // Package cities
-// indlæsning af filen cites.csv og print til stdout
+
+// Indlæsning af filen $HOME/geogrgafi/cites.csv og print til stdout
 package main
 
 import (

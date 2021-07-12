@@ -1,3 +1,4 @@
+// Read csv file cities.csv, convert from lat/lon to UTM and back again
 package main
 
 import (

@@ -1,3 +1,4 @@
+// Convert a single MGRS coordinate to UTM
 package main
 
 import (
