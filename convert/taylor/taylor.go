@@ -1,4 +1,4 @@
-// Package convert
+// Package taylor
 
 // Original Javascript by Chuck Taylor
 // Port to C++ by Alex Hajnal
@@ -15,7 +15,7 @@
 //
 // 1) http://home.hiwaay.net/~taylorc/toolbox/geography/geoutm.html
 
-package convert
+package taylor
 
 import "math"
 

@@ -3,7 +3,7 @@ package main
 
 import (
 	"encoding/csv"
-	"example.com/geografi/convert"
+	"example.com/geografi/convert/utmabs"
 	"fmt"
 	"io"
 	"log"
@@ -42,9 +42,9 @@ func main() {
 
 }
 func transform(ka []string) {
-	koord := convert.Mgrs{Zone: ka[8], Belt: ka[9], Kmkv: ka[10], East: ka[11], North: ka[12], Town: ka[1]}
+	koord := utmabs.Mgrs{Zone: ka[8], Belt: ka[9], Kmkv: ka[10], East: ka[11], North: ka[12], Town: ka[1]}
 
-	result, err := convert.UtmAbs(koord)
+	result, err := utmabs.UtmAbs(koord)
 
 	log.SetPrefix("Error: ")
 	log.SetFlags(0)
