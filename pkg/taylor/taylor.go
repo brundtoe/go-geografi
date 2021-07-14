@@ -156,12 +156,10 @@ func FootpointLatitude(y float64) float64 {
 //    lambda - Longitude of the point, in radians.
 //    lambda0 - Longitude of the central meridian to be used, in radians.
 //
-// Outputs:
+// Returns:
 //    x - The x coordinate of the computed point.
 //    y - The y coordinate of the computed point.
 //
-// Returns:
-//    The function does not return a value.
 func MapLatLonToXY(phi float64, lambda float64, lambda0 float64) (float64, float64) {
 	/* Precalculate ep2 */
 	ep2 := (math.Pow(smA, 2.0) - math.Pow(smB, 2.0)) / math.Pow(smB, 2.0)
@@ -224,12 +222,9 @@ func MapLatLonToXY(phi float64, lambda float64, lambda0 float64) (float64, float
 //   y - The northing of the point, in meters.
 //   lambda0 - Longitude of the central meridian to be used, in radians.
 //
-// Outputs:
+// Returns:
 //   phi    - Latitude in radians.
 //   lambda - Longitude in radians.
-//
-// Returns:
-//   The function does not return a value.
 //
 // Remarks:
 //   The local variables Nf, nuf2, tf, and tf2 serve the same purpose as
@@ -324,12 +319,10 @@ func MapXYToLatLon(x float64, y float64, lambda0 float64) (float64, float64) {
 //          If zone is less than 1 or greater than 60, the routine
 //          will determine the appropriate zone from the value of lon.
 //
-// Outputs:
+// Returns:
 //   x - The x coordinate (easting) of the computed point. (in meters)
 //   y - The y coordinate (northing) of the computed point. (in meters)
 //
-// Returns:
-//   The UTM zone used for calculating the values of x and y.
 func LatLonToUTMXY(lat float64, lon float64, zone int) (float64, float64) {
 
 	if (zone < 1) || (zone > 60) {
@@ -358,12 +351,10 @@ func LatLonToUTMXY(lat float64, lon float64, zone int) (float64, float64) {
 // southhemi - True if the point is in the southern hemisphere
 //               false otherwise.
 //
-// Outputs:
+// Returns:
 // lat - The latitude of the point, in radians.
 // lon - The longitude of the point, in radians.
 //
-// Returns:
-// The function does not return a value.
 func UTMXYToLatLon(x float64, y float64, zone int, southHemi bool) (float64, float64) {
 
 	x -= 500000.0
