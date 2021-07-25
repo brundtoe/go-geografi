@@ -1,6 +1,7 @@
 package taylor
 
 import (
+	"fmt"
 	"math"
 	"testing"
 )
@@ -111,4 +112,10 @@ func TestUTMXYToLatLon(t *testing.T) {
 	if math.Abs(longitude-lon) > diff {
 		t.Errorf("Differencen mellem beregnet longitude %4f og forventet %4f er for stor", lon, longitude)
 	}
+}
+
+func ExampleDegToRad() {
+	rad := DegToRad(60.0)
+	fmt.Printf("Radians %1.6f", rad)
+	// Output: Radians 1.047198
 }

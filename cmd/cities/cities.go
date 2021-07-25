@@ -20,8 +20,10 @@ func main() {
 
 	scanner := bufio.NewScanner(file)
 
+	var tx string
 	for scanner.Scan() {
-		fmt.Println(scanner.Text())
+		tx = scanner.Text()
+		fmt.Println(tx)
 	}
 
 }

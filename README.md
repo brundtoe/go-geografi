@@ -38,6 +38,6 @@ Start dokumentationsserveren
 ```bash
     godoc -http=:8000
 ```
-Dokumentationen findes under Thrid party
+Dokumentationen findes under Third party
 
 
