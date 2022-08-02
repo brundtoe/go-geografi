@@ -2,8 +2,8 @@
 package main
 
 import (
-	"example.com/geografi/pkg/taylor"
 	"fmt"
+	"github.com/brundtoe/go-geografi/geografi/pkg/taylor"
 	"math"
 )
 

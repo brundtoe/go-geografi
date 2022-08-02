@@ -3,8 +3,8 @@ package main
 
 import (
 	"encoding/csv"
-	"example.com/geografi/pkg/utmabs"
 	"fmt"
+	"github.com/brundtoe/go-geografi/geografi/pkg/utmabs"
 	"io"
 	"log"
 	"os"

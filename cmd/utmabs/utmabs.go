@@ -2,8 +2,8 @@
 package main
 
 import (
-	"example.com/geografi/pkg/utmabs"
 	"fmt"
+	"github.com/brundtoe/go-geografi/geografi/pkg/utmabs"
 	"log"
 	"strings"
 )

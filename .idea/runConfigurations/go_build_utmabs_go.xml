@@ -1,11 +1,13 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="go build utmabs.go" type="GoApplicationRunConfiguration" factoryName="Go Application">
     <module name="geografi" />
+    <target name="jackie@valdemar:22" />
     <working_directory value="$PROJECT_DIR$" />
     <kind value="FILE" />
     <package value="example.com/geografi" />
     <directory value="$PROJECT_DIR$" />
     <filePath value="$PROJECT_DIR$/cmd/utmabs/utmabs.go" />
+    <option name="build_on_remote_target" value="true" />
     <method v="2" />
   </configuration>
 </component>
