@@ -12,7 +12,17 @@ import (
 
 func main() {
 
-	file, err := os.Open("/home/jackie/dumps/geografi/cities.csv")
+	hostType := os.Getenv("PLATFORM")
+	var filename string
+	if hostType == "kvm" {
+		filename = "/nfs/data/geografi/cities.csv"
+	} else if hostType == "none" {
+		filename = "/home/projects/devops/data/geografi/cities.csv"
+	} else {
+		fmt.Println("Denne hosttype %v er ikke understøttet", hostType)
+		os.Exit(1)
+	}
+	file, err := os.Open(filename)
 	if err != nil {
 		log.Fatal(err)
 	}
