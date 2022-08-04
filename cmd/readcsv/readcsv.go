@@ -4,6 +4,7 @@ package main
 import (
 	"encoding/csv"
 	"fmt"
+	"github.com/brundtoe/go-geografi/geografi/pkg/utils"
 	"github.com/brundtoe/go-geografi/geografi/pkg/utmabs"
 	"io"
 	"log"
@@ -12,11 +13,16 @@ import (
 
 func main() {
 
-	file, err := os.Open("/home/jackie/dumps/geografi/cities.csv")
+	part := "geografi/cities.csv"
+	filename, err := utils.GetDataPath(part, "PLATFORM")
+	if err != nil {
+		fmt.Printf("Det er ikke muligt at finde path filen %s: %s", part, err)
+		os.Exit(1)
+	}
+	file, err := os.Open(filename)
 	if err != nil {
 		log.Fatal(err)
 	}
-
 	defer func() {
 		if err = file.Close(); err != nil {
 			log.Fatal(err)
@@ -34,7 +40,7 @@ func main() {
 		if err != nil {
 			log.Fatal(err)
 		}
-		fmt.Println(record[8], record[9], record[10], record[11], record[12], record[1])
+		fmt.Println("Kilde:", record[8], record[9], record[10], record[11], record[12], record[1])
 		if record[8] != "Zone" {
 			transform(record)
 		}
@@ -53,7 +59,7 @@ func transform(ka []string) {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("zone %d\t", result.Zone)
+	fmt.Printf("zone:  %d\t", result.Zone)
 	fmt.Printf("belt %s\t", result.Belt)
 	fmt.Printf("east %s\t", koord.East)
 	fmt.Printf("north %s\t", koord.North)
