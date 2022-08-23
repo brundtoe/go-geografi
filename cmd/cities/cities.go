@@ -6,7 +6,7 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"github.com/brundtoe/go-geografi/geografi/pkg/utils"
+	"github.com/brundtoe/go-geografi/pkg/utils"
 	"log"
 	"os"
 )

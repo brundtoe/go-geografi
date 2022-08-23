@@ -3,7 +3,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/brundtoe/go-geografi/geografi/pkg/utmabs"
+	"github.com/brundtoe/go-geografi/pkg/utmabs"
 	"log"
 	"strings"
 )
