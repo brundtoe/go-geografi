@@ -187,6 +187,26 @@ func (mgrs MGRS) ToLL() (LL, int, error) {
 }
 
 /*
+ToLL converts USNG/UTMREF to Lon Lat.
+*/
+func (usng USNG) ToLL() (LL, int, error) {
+
+	mgrs := usng.ToMGRS()
+
+	utm, accuracy, err := mgrs.ToUTM()
+	if err != nil {
+		return LL{}, 0, fmt.Errorf("error <%v> at mgrs.ToUTM()", err)
+	}
+
+	ll, err := utm.ToLL()
+	if err != nil {
+		return LL{}, 0, fmt.Errorf("error <%v> at utm.ToLL(), utm = %#v", err, utm)
+	}
+
+	return ll, accuracy, nil
+}
+
+/*
 degToRad converts from degrees to radians.
 del holds the angle in degrees.
 */
@@ -422,7 +442,19 @@ func (utm UTM) ToMGRS(accuracy int) MGRS {
 }
 
 /*
-ToMGRS converts UTM to MGRS/UTMREF.
+ToMGRS converts USNG to MGRS
+*/
+func (usng USNG) ToMGRS() MGRS {
+	return MGRS(strings.Replace(string(usng), " ", "", 3))
+}
+
+func (usng USNG) ToUTM() (UTM, int, error) {
+	mgrs := usng.ToMGRS()
+	return mgrs.ToUTM()
+}
+
+/*
+ToUSN converts UTM to USNG.
 accuracy holds the wanted accuracy in meters. Possible values are 1, 10, 100, 1000 or 10000 meters.
 */
 func (utm UTM) ToUSNG(accuracy int) USNG {

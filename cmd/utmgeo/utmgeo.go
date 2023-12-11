@@ -6,6 +6,7 @@ import (
 	"github.com/brundtoe/go-geografi/pkg/coco"
 	"github.com/brundtoe/go-geografi/pkg/taylor"
 	"math"
+	"strconv"
 )
 
 func main() {
@@ -25,9 +26,9 @@ func main() {
 	}
 	utm := location.ToUTM()
 
-	fmt.Println(utm)
-	fmt.Println("MGRS..", utm.ToMGRS(10))
-	fmt.Println("USNG..", utm.ToUSNG(10))
+	fmt.Println("UTM..", utm)
+	fmt.Println("MGRS..", utm.ToMGRS(1))
+	fmt.Println("USNG..", utm.ToUSNG(1))
 
 	lat, lon := taylor.UTMXYToLatLon(east, north, 32, false)
 
@@ -41,4 +42,15 @@ func main() {
 		fmt.Printf("Konvertering af longitude overskrider acceptabel tolerance")
 	}
 
+	milgrid := coco.MGRS("32VNJ9485799059")
+
+	utmsted, _, _ := milgrid.ToUTM()
+	println("UTM", utmsted.String())
+	mgrs := coco.USNG("32V NJ 94857 99059").ToMGRS()
+	usngUtm, _, _ := coco.USNG("32V NJ 94857 99059").ToUTM()
+	println("USNG UTM..", usngUtm.String())
+	llSted, accuracy, _ := mgrs.ToLL()
+	latt := fmt.Sprintf("%f", llSted.Lat)
+	long := fmt.Sprintf("%f", llSted.Lon)
+	println(latt, long, strconv.Itoa(accuracy))
 }
