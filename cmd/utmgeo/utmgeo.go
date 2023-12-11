@@ -3,6 +3,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/brundtoe/go-geografi/pkg/coco"
 	"github.com/brundtoe/go-geografi/pkg/taylor"
 	"math"
 )
@@ -10,13 +11,23 @@ import (
 func main() {
 
 	const diff = 0.0000000001
-	latitude := 56.095833
-	longitude := 10.136111
+	latitude := 57.723661
+	longitude := 10.592629
 
 	east, north := taylor.LatLonToUTMXY(latitude, longitude, 32)
 
 	fmt.Printf("East\t %4f\n", east)
 	fmt.Printf("North\t %4f\n", north)
+
+	location := coco.LL{
+		Lat: latitude,
+		Lon: longitude,
+	}
+	utm := location.ToUTM()
+
+	fmt.Println(utm)
+	fmt.Println("MGRS..", utm.ToMGRS(10))
+	fmt.Println("USNG..", utm.ToUSNG(10))
 
 	lat, lon := taylor.UTMXYToLatLon(east, north, 32, false)
 
