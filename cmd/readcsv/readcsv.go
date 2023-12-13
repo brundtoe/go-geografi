@@ -40,7 +40,7 @@ func main() {
 		if err != nil {
 			log.Fatal(err)
 		}
-		fmt.Println("Kilde:", record[8], record[9], record[10], record[11], record[12], record[1])
+		fmt.Println("Kilde: ", record[8], record[9], record[10], record[11], record[12], record[1])
 		if record[8] != "Zone" {
 			transform(record)
 		}
@@ -59,10 +59,9 @@ func transform(ka []string) {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("zone:  %d\t", result.Zone)
-	fmt.Printf("belt %s\t", result.Belt)
-	fmt.Printf("east %s\t", koord.East)
-	fmt.Printf("north %s\t", koord.North)
-	fmt.Printf("easting %.0f\t", result.Easting)
-	fmt.Printf("northing %.0f\n", result.Northing)
+	fmt.Printf("Result: %d", result.Zone)
+	fmt.Printf("%2s ", result.Belt)
+	fmt.Printf("%.0f\t", result.Easting)
+	fmt.Printf("%.0f\n", result.Northing)
+	fmt.Println("----------------")
 }
