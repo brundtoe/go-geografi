@@ -23,6 +23,9 @@ Modulet utmabs
     go test -v 
 ```
 
+Modulet coco er en justeret kopi af https://github.com/klaus-tockloth/coco, som er en delvis portering til golang af https://github.com/proj4js/mgrs
+
+
 ## Eksempler
 
 Eksempler findes i mappen cmd.
