@@ -1,27 +1,49 @@
-// Convert a single MGRS coordinate to UTM
+// Read a csv formated file cities.csv and convert from MGRS to UTM
 package main
 
 import (
+	"encoding/csv"
 	"fmt"
+	"github.com/brundtoe/go-geografi/pkg/utils"
 	"github.com/brundtoe/go-geografi/pkg/utmabs"
+	"io"
 	"log"
-	"strings"
 )
 
-/*
-Som rust udgaven hånderes kmkv angive med 1 m nøjagtighed dvs 5 cifre
-*/
-
 func main() {
-	fmt.Println("Hello Jackie")
 
-	//koord := Mgrs{"32", "U", "NG", "08600", "77000", "Somewhere"}
+	filename := "geografi/cities.csv"
+	fp, err := utils.OpenDataFile(filename)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer func() {
+		fmt.Printf("Datafilen %s lukkes", filename)
+		if err = fp.Close(); err != nil {
+			log.Fatal(err)
+		}
+	}()
 
-	koordCsv := "32;U;NG;08600;77000;Somewhere"
+	r := csv.NewReader(fp)
+	r.Comma = ';'
 
-	ka := strings.Split(koordCsv, ";")
+	for {
+		record, err := r.Read()
+		if err == io.EOF {
+			break
+		}
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Println("Kilde: ", record[8], record[9], record[10], record[11], record[12], record[1])
+		if record[8] != "Zone" {
+			transform(record)
+		}
+	}
 
-	koord := utmabs.Mgrs{Zone: ka[0], Belt: ka[1], Kmkv: ka[2], East: ka[3], North: ka[4], Town: ka[5]}
+}
+func transform(ka []string) {
+	koord := utmabs.Mgrs{Zone: ka[8], Belt: ka[9], Kmkv: ka[10], East: ka[11], North: ka[12], Town: ka[1]}
 
 	result, err := utmabs.UtmAbs(koord)
 
@@ -32,11 +54,9 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("zone %d\t", result.Zone)
-	fmt.Printf("belt %s\t", result.Belt)
-	fmt.Printf("east %s\t", koord.East)
-	fmt.Printf("north %s\t", koord.North)
-	fmt.Printf("easting %.0f\t", result.Easting)
-	fmt.Printf("northing %.0f\n", result.Northing)
-
+	fmt.Printf("Result: %d", result.Zone)
+	fmt.Printf("%2s ", result.Belt)
+	fmt.Printf("%.0f\t", result.Easting)
+	fmt.Printf("%.0f\n", result.Northing)
+	fmt.Println("----------------")
 }

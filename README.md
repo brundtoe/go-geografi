@@ -23,7 +23,7 @@ Modulet utmabs
     go test -v 
 ```
 
-Modulet goutm er en justeret kopi af https://github.com/klaus-tockloth/coco, som er en delvis portering til golang af https://github.com/proj4js/mgrs
+Modulet geoutm er en justeret kopi af https://github.com/klaus-tockloth/coco, som er en delvis portering til golang af https://github.com/proj4js/mgrs
 
 
 ## Eksempler
@@ -34,6 +34,23 @@ Eksempler findes i mappen cmd.
     go run <absoulte path to project root>/cmd/cities
 
 ```
+
+Filen cities.go
+
+    Demo af indlæsning af filen cities.csv
+
+Filen utmabs.go anvender ED50 modellen til konverteringen
+    
+    Konvertering af MGRS 32V NJ 948757 99059 til UTM 32V 5948757 6399059 
+
+Filen utmgeo.go anvender pkg/taylor
+
+    Konvertering fra LatLonToUTMXX og tilbage med UTMXYToLatLon med visning af evt difference
+
+Filen to_mgrs.go anvender pkg/geoutm
+
+    Konvertering af lat lon til MGRS opg USNG
+
 
 ## Dokumentation
 
