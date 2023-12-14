@@ -1,11 +1,11 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="go build readcsv.go" type="GoApplicationRunConfiguration" factoryName="Go Application" nameIsGenerated="true">
+  <configuration default="false" name="go build to_mgrs" type="GoApplicationRunConfiguration" factoryName="Go Application">
     <module name="geografi" />
     <working_directory value="$PROJECT_DIR$" />
     <kind value="FILE" />
     <package value="example.com/geografi" />
     <directory value="$PROJECT_DIR$" />
-    <filePath value="$PROJECT_DIR$/cmd/readcsv/readcsv.go" />
+    <filePath value="$PROJECT_DIR$/cmd/to_mgrs/to_mgrs.go" />
     <method v="2" />
   </configuration>
 </component>
