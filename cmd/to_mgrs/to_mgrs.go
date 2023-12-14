@@ -7,28 +7,23 @@ import (
 	"github.com/brundtoe/go-geografi/pkg/utils"
 	"io"
 	"log"
-	"os"
 )
 
 func main() {
 
-	part := "geografi/cities.csv"
-	filename, err := utils.GetDataPath(part, "PLATFORM")
-	if err != nil {
-		fmt.Printf("Det er ikke muligt at finde path filen %s: %s", part, err)
-		os.Exit(1)
-	}
-	file, err := os.Open(filename)
+	filename := "geografi/cities.csv"
+	fp, err := utils.OpenDataFile(filename)
 	if err != nil {
 		log.Fatal(err)
 	}
 	defer func() {
-		if err = file.Close(); err != nil {
+		fmt.Printf("Datafilen %s lukkes", filename)
+		if err = fp.Close(); err != nil {
 			log.Fatal(err)
 		}
 	}()
 
-	r := csv.NewReader(file)
+	r := csv.NewReader(fp)
 	r.Comma = ';'
 
 	for {
