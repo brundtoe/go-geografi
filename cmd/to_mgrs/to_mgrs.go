@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/csv"
 	"fmt"
-	"github.com/brundtoe/go-geografi/pkg/coco"
+	"github.com/brundtoe/go-geografi/pkg/geoutm"
 	"github.com/brundtoe/go-geografi/pkg/utils"
 	"io"
 	"log"
@@ -17,8 +17,7 @@ type City struct {
 	municipality string
 	region       string
 	population   int64
-	latitude     float64
-	longitude    float64
+	geoloc       geoutm.LL
 	zone         int64
 	belt         string
 	kmkv         string
@@ -68,20 +67,20 @@ func main() {
 	}
 }
 
-func (city City) toMgrs() coco.MGRS {
-	location := coco.LL{
-		Lat: city.latitude,
-		Lon: city.longitude,
+func (city City) toMgrs() geoutm.MGRS {
+	location := geoutm.LL{
+		Lat: city.geoloc.Lat,
+		Lon: city.geoloc.Lon,
 	}
 	mgrs, _ := location.ToMGRS(1)
 	return mgrs
 
 }
 
-func (city City) toUsng() coco.USNG {
-	location := coco.LL{
-		Lat: city.latitude,
-		Lon: city.longitude,
+func (city City) toUsng() geoutm.USNG {
+	location := geoutm.LL{
+		Lat: city.geoloc.Lat,
+		Lon: city.geoloc.Lon,
 	}
 	utm := location.ToUTM()
 	usng := utm.ToUSNG(1)
@@ -95,8 +94,8 @@ func (city *City) buildCity(koord []string) {
 	city.municipality = koord[3]
 	city.region = koord[4]
 	city.population, _ = strconv.ParseInt(koord[5], 10, 64)
-	city.latitude, _ = strconv.ParseFloat(koord[6], 64)
-	city.longitude, _ = strconv.ParseFloat(koord[7], 64)
+	city.geoloc.Lat, _ = strconv.ParseFloat(koord[6], 64)
+	city.geoloc.Lon, _ = strconv.ParseFloat(koord[7], 64)
 	city.zone, _ = strconv.ParseInt(koord[8], 10, 64)
 	city.belt = koord[9]
 	city.kmkv = koord[10]
