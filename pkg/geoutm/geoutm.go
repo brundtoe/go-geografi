@@ -583,7 +583,7 @@ func getLetter100kID(column, row, parm int) string {
 		rowInt = rowInt - charV + charA - 1
 	}
 
-	twoLetter := string(colInt) + string(rowInt)
+	twoLetter := string(rune(colInt)) + string(rune(rowInt))
 	return twoLetter
 }
 
