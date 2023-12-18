@@ -59,31 +59,37 @@ Links:
 */
 
 /*
-Package coco (coordinate conversion) provides methods for converting coordinates between WGS84 Lon Lat, UTM and MGRS/UTMREF.
+Package geoutm (coordinate conversion) provides methods for converting coordinates between WGS84 Lon Lat, UTM and MGRS/UTMREF.
 
 Supported conversions:
 
 	utm.ToLL()   : converts from UTM to LL
 	utm.ToMGRS() : converts from UTM to MGRS
+	utm.ToUSNG   : converts from UTM to USNG
 	ll.ToUTM()   : converts from LL to UTM
 	ll.ToMGRS()  : converts from LL to MGRS
 	mgrs.ToUTM() : converts from MGRS to UTM
 	mgrs.ToLL()  : converts from MGRS to LL
+	usng.ToLL	 : converts from USNG to LL
+	usng.ToMGRS	 : converts from USNG to MGRS
+	usng.toUTM   : converts from USNG to UTM
 
 Data objects:
 
 	UTM  : ZoneNumber ZoneLetter Easting Northing
 	LL   : Longitude Latitude
 	MGRS : String
+	USNG : string
 
 Abbreviations:
 
-	Lon    : Longitude
-	Lat    : Latitude
-	MGRS   : Military Grid Reference System (same as UTMREF)
-	UTM    : Universal Transverse Mercator
-	UTMREF : UTM Reference System (same as MGRS)
-	WGS84  : World Geodetic System 1984 (same as EPSG:4326)
+		Lon    : Longitude
+		Lat    : Latitude
+		MGRS   : Military Grid Reference System (same as UTMREF)
+	    USNG   : United Tastes National Grid samt as MGRS formated with spaces
+		UTM    : Universal Transverse Mercator
+		UTMREF : UTM Reference System (same as MGRS)
+		WGS84  : World Geodetic System 1984 (same as EPSG:4326)
 */
 package geoutm
 
