@@ -1,7 +1,8 @@
 # Geografi
 
-Projektet indeholder to moduler
+Projektet indeholder tre moduler
 
+- geoutm, er en justeret kopi af https://github.com/klaus-tockloth/coco, som er en delvis portering til golang af https://github.com/proj4js/mgrs
 - taylor, der er en Go implementering af Chuck taylors oprindelige WGS84 konvertering mellem lat/lon og UTM
 - utmabs, der er en omregning fra Military Grid System (MGRS) til UTM.
 
@@ -12,19 +13,21 @@ Clone projektet https://github.com/brundtoe/go-geografi.git
 ## test
 
 Modulet taylor
-```bash
+```shell
     cd pkg/taylor
     go test -v 
 ```
 Modulet utmabs
 
-```bash
+```shell
     cd pkg/utmabs
     go test -v 
 ```
 
-Modulet geoutm er en justeret kopi af https://github.com/klaus-tockloth/coco, som er en delvis portering til golang af https://github.com/proj4js/mgrs
-
+Modulet geoutm
+```shell
+```cd pkg/utmgeo
+  go test -v
 
 ## Eksempler
 
