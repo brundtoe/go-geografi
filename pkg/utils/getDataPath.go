@@ -14,7 +14,7 @@ func GetDataPath(part string, envvar string) (string, error) {
 	}
 	if hostType == "kvm" {
 		return filepath.Join("/nfs/data", part), nil
-	} else if hostType == "victoria" {
+	} else if hostType == "controller" {
 		return filepath.Join("/home/projects/devops/data", part), nil
 	} else if hostType == "" {
 		return "", errors.New("Envvar er fundet men der er ikke angivet en værdi")
