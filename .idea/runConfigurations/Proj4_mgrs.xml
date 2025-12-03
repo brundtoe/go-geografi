@@ -1,11 +1,11 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="go build to_mgrs" type="GoApplicationRunConfiguration" factoryName="Go Application">
+  <configuration default="false" name="Proj4 mgrs" type="GoApplicationRunConfiguration" factoryName="Go Application">
     <module name="geografi" />
     <working_directory value="$PROJECT_DIR$" />
     <kind value="FILE" />
-    <package value="example.com/geografi" />
+    <package value="github.com/brundtoe/go-geografi" />
     <directory value="$PROJECT_DIR$" />
-    <filePath value="$PROJECT_DIR$/cmd/to_mgrs/to_mgrs.go" />
+    <filePath value="$PROJECT_DIR$/cmd/geoutm/to_mgrs.go" />
     <method v="2" />
   </configuration>
 </component>

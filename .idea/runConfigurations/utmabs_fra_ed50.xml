@@ -1,10 +1,9 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="go build utmabs.go" type="GoApplicationRunConfiguration" factoryName="Go Application">
+  <configuration default="false" name="utmabs fra ed50" type="GoApplicationRunConfiguration" factoryName="Go Application">
     <module name="geografi" />
-    <target name="@@@LOCAL@@@" />
     <working_directory value="$PROJECT_DIR$" />
     <kind value="FILE" />
-    <package value="example.com/geografi" />
+    <package value="github.com/brundtoe/go-geografi" />
     <directory value="$PROJECT_DIR$" />
     <filePath value="$PROJECT_DIR$/cmd/utmabs/utmabs.go" />
     <method v="2" />
