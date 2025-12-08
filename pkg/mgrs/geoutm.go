@@ -91,7 +91,7 @@ Abbreviations:
 		UTMREF : UTM Reference System (same as MGRS)
 		WGS84  : World Geodetic System 1984 (same as EPSG:4326)
 */
-package geoutm
+package mgrs
 
 import (
 	"fmt"

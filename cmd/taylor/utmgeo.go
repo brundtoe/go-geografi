@@ -4,12 +4,13 @@ package main
 import (
 	"encoding/csv"
 	"fmt"
-	"github.com/brundtoe/go-geografi/pkg/taylor"
-	"github.com/brundtoe/go-geografi/pkg/utils"
 	"io"
 	"log"
 	"math"
 	"strconv"
+
+	"github.com/brundtoe/go-geografi/pkg/taylor"
+	"github.com/brundtoe/go-geografi/pkg/utils"
 )
 
 func main() {
@@ -38,6 +39,7 @@ func main() {
 			log.Fatal(err)
 		}
 		// fmt.Println("Kilde: ", record[1], record[8], record[9], record[10], record[11], record[12])
+		// spring over konvertering af filens header
 		if record[8] != "Zone" {
 			transform(record)
 		}
@@ -51,14 +53,16 @@ func transform(koord []string) {
 	longitude, _ := strconv.ParseFloat(koord[7], 64)
 
 	zone, _ := strconv.ParseInt(koord[8], 10, 64)
-	east, north := taylor.LatLonToUTMXY(latitude, longitude, int(zone))
+	// todo her beregnes ikke den fulde UTM
+	// todo nyt eksemple som beregner usng
+	easting, northing := taylor.LatLonToUTMXY(latitude, longitude, int(zone))
 
-	lat, lon := taylor.UTMXYToLatLon(east, north, int(zone), false)
+	lat, lon := taylor.UTMXYToLatLon(easting, northing, int(zone), false)
 
 	// fmt.Printf("Lat\t %4f\n", taylor.RadToDeg(lat))
 	// fmt.Printf("Lon\t %4f\n", taylor.RadToDeg(lon))
 
-	fmt.Printf("%18s East\t %4f North\t %4f\n", koord[1], east, north)
+	fmt.Printf("%18s East %d \tNorth %d\n", koord[1], int32(easting), int32(northing))
 
 	if math.Abs(latitude-taylor.RadToDeg(lat)) > diff {
 		fmt.Printf("%s Konvertering af latitude overskrider acceptabel tolerance\n", koord[1])

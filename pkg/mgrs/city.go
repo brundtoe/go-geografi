@@ -1,4 +1,4 @@
-package geoutm
+package mgrs
 
 import "strconv"
 

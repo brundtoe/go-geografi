@@ -5,7 +5,7 @@
     <kind value="FILE" />
     <package value="github.com/brundtoe/go-geografi" />
     <directory value="$PROJECT_DIR$" />
-    <filePath value="$PROJECT_DIR$/cmd/geoutm/to_mgrs.go" />
+    <filePath value="$PROJECT_DIR$/cmd/mgrs/to_mgrs.go" />
     <method v="2" />
   </configuration>
 </component>

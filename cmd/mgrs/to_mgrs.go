@@ -3,10 +3,11 @@ package main
 import (
 	"encoding/csv"
 	"fmt"
-	"github.com/brundtoe/go-geografi/pkg/geoutm"
-	"github.com/brundtoe/go-geografi/pkg/utils"
 	"io"
 	"log"
+
+	"github.com/brundtoe/go-geografi/pkg/mgrs"
+	"github.com/brundtoe/go-geografi/pkg/utils"
 )
 
 func main() {
@@ -34,7 +35,7 @@ func main() {
 		if err != nil {
 			log.Fatal(err)
 		}
-		location := geoutm.City{}
+		location := mgrs.City{}
 		// first line contains field names
 		if record[1] != "City" {
 			location.BuildCity(record)
