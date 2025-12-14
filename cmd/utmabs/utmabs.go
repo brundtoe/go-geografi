@@ -4,10 +4,11 @@ package main
 import (
 	"encoding/csv"
 	"fmt"
-	"github.com/brundtoe/go-geografi/pkg/utils"
-	"github.com/brundtoe/go-geografi/pkg/utmabs"
 	"io"
 	"log"
+
+	"github.com/brundtoe/go-geografi/pkg/utils"
+	"github.com/brundtoe/go-geografi/pkg/utmabs"
 )
 
 func main() {
@@ -54,9 +55,8 @@ func transform(ka []string) {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("Result: %d", result.Zone)
-	fmt.Printf("%2s ", result.Belt)
-	fmt.Printf("%.0f\t", result.Easting)
+	fmt.Printf("Result: %2d ", result.Zone)
+	fmt.Printf("%.0f ", result.Easting)
 	fmt.Printf("%.0f\n", result.Northing)
 	fmt.Println("----------------")
 }
