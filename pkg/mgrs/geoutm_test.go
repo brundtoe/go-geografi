@@ -214,16 +214,20 @@ func TestMGRS_ToLL(t *testing.T) {
 	}
 }
 
+/**
+ * Examples tests checker fmt.Printf("%s -> %s\n", utm, ll) mod linien efter // Output
+ */
+
 func ExampleUTM_ToLL() {
 
-	utm := UTM{ZoneNumber: 23, ZoneLetter: 'K', Easting: 611733, Northing: 7800614}
+	utm := UTM{ZoneNumber: 23, ZoneLetter: 'K', Easting: 611733.14, Northing: 7800614.37}
 	ll, err := utm.ToLL()
 	if err != nil {
 		log.Fatalf("error <%v> at utm.ToLL()", err)
 	}
 	fmt.Printf("%s -> %s\n", utm, ll)
 	// Output:
-	// 23K 611733 7800614 -> -19.887498 -43.932664
+	// 23K 611733.14 7800614.37 -> -19.887495 -43.932663
 }
 
 func ExampleLL_ToUTM() {
@@ -232,7 +236,7 @@ func ExampleLL_ToUTM() {
 	utm := ll.ToUTM()
 	fmt.Printf("%s -> %s\n", ll, utm)
 	// Output:
-	// 36.236123 -115.082098 -> 11S 672349 4011843
+	// 36.236123 -115.082098 -> 11S 672349.00 4011844.00
 }
 
 func ExampleUTM_ToMGRS() {
@@ -242,7 +246,7 @@ func ExampleUTM_ToMGRS() {
 	mgrs := utm.ToMGRS(accuracy)
 	fmt.Printf("%s -> %s\n", utm, mgrs)
 	// Output:
-	// 31U 700373 5704554 -> 31UGT0037304554
+	// 31U 700373.00 5704554.00 -> 31UGT0037304554
 }
 
 func ExampleMGRS_ToUTM() {
@@ -254,7 +258,7 @@ func ExampleMGRS_ToUTM() {
 	}
 	fmt.Printf("%s -> %s (accuracy %d meters)\n", mgrs, utm, accuracy)
 	// Output:
-	// 32ULC989564 -> 32U 398900 5756400 (accuracy 100 meters)
+	// 32ULC989564 -> 32U 398900.00 5756400.00 (accuracy 100 meters)
 }
 
 func ExampleLL_ToMGRS() {
