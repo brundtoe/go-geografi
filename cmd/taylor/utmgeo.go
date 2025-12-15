@@ -62,7 +62,7 @@ func transform(koord []string) {
 	// fmt.Printf("Lat\t %4f\n", taylor.RadToDeg(lat))
 	// fmt.Printf("Lon\t %4f\n", taylor.RadToDeg(lon))
 
-	fmt.Printf("%18s East %d \tNorth %d\n", koord[1], int32(easting), int32(northing))
+	fmt.Printf("%18s East %.2f \tNorth %.2f\n", koord[1], easting, northing)
 
 	if math.Abs(latitude-taylor.RadToDeg(lat)) > diff {
 		fmt.Printf("%s Konvertering af latitude overskrider acceptabel tolerance\n", koord[1])

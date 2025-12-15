@@ -64,16 +64,15 @@ func TestLL_ToUTM(t *testing.T) {
 		utm UTM // out
 	}{
 		// positive tests
-		{LL{Lat: 51.95, Lon: 7.53}, UTM{ZoneNumber: 32, ZoneLetter: 'U', Easting: 398973, Northing: 5756497}},
-		{LL{Lat: 52.482728, Lon: -1.908445}, UTM{ZoneNumber: 30, ZoneLetter: 'U', Easting: 574125, Northing: 5815290}},
-		{LL{Lat: -19.887495, Lon: -43.932663}, UTM{ZoneNumber: 23, ZoneLetter: 'K', Easting: 611733, Northing: 7800614}},
-		{LL{Lat: 60.0, Lon: 4.0}, UTM{ZoneNumber: 32, ZoneLetter: 'V', Easting: 221288, Northing: 6661953}},  // Norway 31->32
-		{LL{Lat: 75.0, Lon: 8.0}, UTM{ZoneNumber: 31, ZoneLetter: 'X', Easting: 644293, Northing: 8329692}},  // Svalbard 32->31
-		{LL{Lat: 75.0, Lon: 10.0}, UTM{ZoneNumber: 33, ZoneLetter: 'X', Easting: 355706, Northing: 8329692}}, // Svalbard 32->33
-		{LL{Lat: 75.0, Lon: 10.0}, UTM{ZoneNumber: 33, ZoneLetter: 'X', Easting: 355706, Northing: 8329692}}, // Svalbard 34->33
-		{LL{Lat: 75.0, Lon: 22.0}, UTM{ZoneNumber: 35, ZoneLetter: 'X', Easting: 355706, Northing: 8329692}}, // Svalbard 34->35
-		{LL{Lat: 75.0, Lon: 32.0}, UTM{ZoneNumber: 35, ZoneLetter: 'X', Easting: 644293, Northing: 8329692}}, // Svalbard 36->35
-		{LL{Lat: 75.0, Lon: 34.0}, UTM{ZoneNumber: 37, ZoneLetter: 'X', Easting: 355706, Northing: 8329692}}, // Svalbard 36->37
+		{LL{Lat: 51.95, Lon: 7.53}, UTM{ZoneNumber: 32, ZoneLetter: 'U', Easting: 398973.96, Northing: 5756497.74}},
+		{LL{Lat: 52.482728, Lon: -1.908445}, UTM{ZoneNumber: 30, ZoneLetter: 'U', Easting: 574125.98, Northing: 5815290.89}},
+		{LL{Lat: -19.887495, Lon: -43.932663}, UTM{ZoneNumber: 23, ZoneLetter: 'K', Easting: 611733.14, Northing: 7800614.37}},
+		{LL{Lat: 60.0, Lon: 4.0}, UTM{ZoneNumber: 32, ZoneLetter: 'V', Easting: 221288.77, Northing: 6661953.04}},  // Norway 31->32
+		{LL{Lat: 75.0, Lon: 8.0}, UTM{ZoneNumber: 31, ZoneLetter: 'X', Easting: 644293.43, Northing: 8329692.65}},  // Svalbard 32->31
+		{LL{Lat: 75.0, Lon: 10.0}, UTM{ZoneNumber: 33, ZoneLetter: 'X', Easting: 355706.57, Northing: 8329692.65}}, // Svalbard 32->33
+		{LL{Lat: 75.0, Lon: 22.0}, UTM{ZoneNumber: 35, ZoneLetter: 'X', Easting: 355706.57, Northing: 8329692.65}}, // Svalbard 34->35
+		{LL{Lat: 75.0, Lon: 32.0}, UTM{ZoneNumber: 35, ZoneLetter: 'X', Easting: 644293.43, Northing: 8329692.65}}, // Svalbard 36->35
+		{LL{Lat: 75.0, Lon: 34.0}, UTM{ZoneNumber: 37, ZoneLetter: 'X', Easting: 355706.57, Northing: 8329692.65}}, // Svalbard 36->37
 		// negative tests
 		// nothing to do here
 	}
@@ -161,7 +160,7 @@ func TestLL_ToMGRS(t *testing.T) {
 		err      error  // out
 	}{
 		// positive tests
-		{LL{Lat: 51.95, Lon: 7.53}, 1, "32ULC9897356497", nil},
+		{LL{Lat: 51.95, Lon: 7.53}, 1, "32ULC9897456497", nil},
 		{LL{Lat: 51.95, Lon: 7.53}, 100, "32ULC989564", nil},
 		{LL{Lat: -19.887495, Lon: -43.932663}, 1, "23KPU1173300614", nil},
 		{LL{Lat: 0.0, Lon: -0.592328}, 1, "30NYF6799300000", nil},

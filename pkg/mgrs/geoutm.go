@@ -114,7 +114,7 @@ String returns stringified UTM object.
 */
 func (utm UTM) String() string {
 
-	return fmt.Sprintf("%d%c %.0f %.0f", utm.ZoneNumber, utm.ZoneLetter, utm.Easting, utm.Northing)
+	return fmt.Sprintf("%d%c %.2f %.2f", utm.ZoneNumber, utm.ZoneLetter, utm.Easting, utm.Northing)
 }
 
 // LL defines coordinate in Longitude / Latitude
@@ -291,8 +291,8 @@ func (ll LL) ToUTM() UTM {
 	utm := UTM{}
 	utm.ZoneNumber = ZoneNumber
 	utm.ZoneLetter = getLetterDesignator(Lat)
-	utm.Easting = math.Trunc(UTMEasting)
-	utm.Northing = math.Trunc(UTMNorthing)
+	utm.Easting = UTMEasting
+	utm.Northing = UTMNorthing
 
 	return utm
 }
@@ -434,8 +434,8 @@ func (utm UTM) ToMGRS(accuracy int) MGRS {
 	}
 
 	// prepend with leading zeroes
-	seasting := "00000" + fmt.Sprintf("%.0f", utm.Easting)
-	snorthing := "00000" + fmt.Sprintf("%.0f", utm.Northing)
+	seasting := "00000" + fmt.Sprintf("%.0f", math.Floor(utm.Easting*100)/100)
+	snorthing := "00000" + fmt.Sprintf("%.0f", math.Floor(utm.Northing*100/100))
 
 	mgrs := fmt.Sprintf("%d%s%s%s%s",
 		utm.ZoneNumber,
