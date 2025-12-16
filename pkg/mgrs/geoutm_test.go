@@ -160,7 +160,7 @@ func TestLL_ToMGRS(t *testing.T) {
 		err      error  // out
 	}{
 		// positive tests
-		{LL{Lat: 51.95, Lon: 7.53}, 1, "32ULC9897456497", nil},
+		{LL{Lat: 51.95, Lon: 7.53}, 1, "32ULC9897356497", nil},
 		{LL{Lat: 51.95, Lon: 7.53}, 100, "32ULC989564", nil},
 		{LL{Lat: -19.887495, Lon: -43.932663}, 1, "23KPU1173300614", nil},
 		{LL{Lat: 0.0, Lon: -0.592328}, 1, "30NYF6799300000", nil},

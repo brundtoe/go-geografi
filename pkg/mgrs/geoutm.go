@@ -434,8 +434,8 @@ func (utm UTM) ToMGRS(accuracy int) MGRS {
 	}
 
 	// prepend with leading zeroes
-	seasting := "00000" + fmt.Sprintf("%.0f", math.Floor(utm.Easting*100)/100)
-	snorthing := "00000" + fmt.Sprintf("%.0f", math.Floor(utm.Northing*100/100))
+	seasting := "00000" + fmt.Sprintf("%.0f", math.Floor(utm.Easting))
+	snorthing := "00000" + fmt.Sprintf("%.0f", math.Floor(utm.Northing))
 
 	mgrs := fmt.Sprintf("%d%s%s%s%s",
 		utm.ZoneNumber,
@@ -482,8 +482,8 @@ func (utm UTM) ToUSNG(accuracy int) USNG {
 	}
 
 	// prepend with leading zeroes
-	seasting := "00000" + fmt.Sprintf("%.0f", utm.Easting)
-	snorthing := "00000" + fmt.Sprintf("%.0f", utm.Northing)
+	seasting := "00000" + fmt.Sprintf("%.0f", math.Floor(utm.Easting))
+	snorthing := "00000" + fmt.Sprintf("%.0f", math.Floor(utm.Northing))
 
 	usng := fmt.Sprintf("%d%s %s %s %s",
 		utm.ZoneNumber,
