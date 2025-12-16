@@ -6,6 +6,8 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"math"
+	"strconv"
 
 	"github.com/brundtoe/go-geografi/pkg/utils"
 	"github.com/brundtoe/go-geografi/pkg/utmabs"
@@ -36,7 +38,6 @@ func main() {
 		if err != nil {
 			log.Fatal(err)
 		}
-		fmt.Println("Kilde: ", record[8], record[9], record[10], record[11], record[12], record[1])
 		if record[8] != "Zone" {
 			transform(record)
 		}
@@ -55,8 +56,19 @@ func transform(ka []string) {
 		log.Fatal(err)
 	}
 
-	fmt.Printf("Result: %2d ", result.Zone)
-	fmt.Printf("%.0f ", result.Easting)
-	fmt.Printf("%.0f\n", result.Northing)
-	fmt.Println("----------------")
+	fmt.Print("Kilde: ", ka[8], " ", ka[13], " ", ka[14])
+
+	fmt.Printf(" Result: %2d %.0f %.0f %-16s", result.Zone, result.Easting, result.Northing, ka[1])
+
+	easting, err := strconv.ParseFloat(ka[13], 64)
+	northing, _ := strconv.ParseFloat(ka[14], 64)
+
+	if math.Abs(easting-result.Easting) > 1 {
+		fmt.Print(" East ")
+	}
+	if math.Abs(northing-result.Northing) > 1 {
+		fmt.Print(" North ")
+	}
+
+	fmt.Println()
 }
