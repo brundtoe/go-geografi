@@ -1,0 +1,11 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Proj4js to Wgs84" type="GoApplicationRunConfiguration" factoryName="Go Application">
+    <module name="geografi" />
+    <working_directory value="$PROJECT_DIR$" />
+    <kind value="FILE" />
+    <package value="github.com/brundtoe/go-geografi/cmd/mgrs/to_wgs84" />
+    <directory value="$PROJECT_DIR$" />
+    <filePath value="$PROJECT_DIR$/cmd/mgrs/to_wgs84.go" />
+    <method v="2" />
+  </configuration>
+</component>

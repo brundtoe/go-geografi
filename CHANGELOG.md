@@ -5,9 +5,14 @@
 Ændringer:
 - utmabs.go test for afvigelser i beregning af easting og northing
 - to_mgrs.go test for afvigelser i beregning af east og north i USNG og implicit i MGRS
-- 
+
+Tilføjleser:
+- to_wgs84.go transformerer utm til wgs84
+
 Fejlrettelser:
 - utm.toMGRS og utm.toUSNG rettet fejl i trunkering af resultatet 
+
+
 
 ## 15. december 2025
 

@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Proj4 mgrs test" type="GoTestRunConfiguration" factoryName="Go Test">
+  <configuration default="false" name="Proj4js mgrs test" type="GoTestRunConfiguration" factoryName="Go Test">
     <module name="geografi" />
     <working_directory value="$PROJECT_DIR$/pkg/mgrs" />
     <root_directory value="$PROJECT_DIR$" />
