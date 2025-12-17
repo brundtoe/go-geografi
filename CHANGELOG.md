@@ -6,8 +6,9 @@
 - utmabs.go test for afvigelser i beregning af easting og northing
 - to_mgrs.go test for afvigelser i beregning af east og north i USNG og implicit i MGRS
 
-Tilføjleser:
+Tilføjelser:
 - to_wgs84.go transformerer utm til wgs84
+- milgrid_to-qgs84.go transformerer milgrid og usng til wgs84
 
 Fejlrettelser:
 - utm.toMGRS og utm.toUSNG rettet fejl i trunkering af resultatet 

@@ -44,15 +44,23 @@ Filen cities.go
 
 Filen utmabs.go anvender ED50 modellen til konverteringen
     
-    Konvertering af MGRS 32V NJ 948757 99059 til UTM 32V 5948757 6399059 
+    Transformation af MGRS 32V NJ 948757 99059 til UTM 32V 5948757 6399059 
 
 Filen utmgeo.go anvender pkg/taylor
 
-    Konvertering fra LatLonToUTMXX og tilbage med UTMXYToLatLon med visning af evt difference
+    Transfomration fra LatLonToUTMXX og tilbage med UTMXYToLatLon med visning af evt difference
 
 Filen to_mgrs.go anvender pkg/geoutm
 
-    Konvertering af lat lon til MGRS opg USNG
+    Transformation af lat lon til MGRS opg USNG med visning af evt difference
+
+Filen to_wgs84.go anvender pkg/geoutm
+
+    Transformation af UTM til Wgs84 med visning af evt difference
+
+Filen milgrid_to_wgs84.go anvender pkg/geoutm
+
+    Transformation af MGRS og USNG til Wgs84 med visning af evt difference
 
 
 ## Dokumentation
