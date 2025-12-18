@@ -1,10 +1,10 @@
 # Geografi
 
-Projektet indeholder tre moduler
+Projektet indeholder tre packages
 
-- geoutm, er en justeret kopi af https://github.com/klaus-tockloth/coco, som er en delvis portering til golang af https://github.com/proj4js/mgrs
+- mgrs, er en justeret kopi af https://github.com/klaus-tockloth/coco, som er en delvis portering til golang af https://github.com/proj4js/mgrs
 - taylor, der er en Go implementering af Chuck taylors oprindelige WGS84 konvertering mellem lat/lon og UTM
-- utmabs, der er en omregning fra Military Grid System (MGRS) til UTM.
+- mgrs_to_utm, der er en omregning fra Military Grid System (MGRS) til UTM. Er porterete fra python/geografi
 
 ## Installation
 
@@ -12,21 +12,21 @@ Clone projektet https://github.com/brundtoe/go-geografi.git
 
 ## test
 
-Modulet taylor
+package taylor
 ```shell
     cd pkg/taylor
     go test -v 
 ```
-Modulet utmabs
+Package mgrs_to_utm
 
 ```shell
-    cd pkg/utmabs
+    cd pkg/mgrs_to_utm
     go test -v 
 ```
 
-Modulet geoutm
+Package mgrs
 ```shell
-```cd pkg/utmgeo
+```cd pkg/mgrs
   go test -v
 
 ## Eksempler
@@ -42,7 +42,7 @@ Filen cities.go
 
     Demo af indlæsning af filen cities.csv
 
-Filen utmabs.go anvender ED50 modellen til konverteringen
+Filen mgrs_to_utm.go anvender ED50 modellen til konverteringen
     
     Transformation af MGRS 32V NJ 948757 99059 til UTM 32V 5948757 6399059 
 

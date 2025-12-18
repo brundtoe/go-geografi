@@ -9,8 +9,8 @@ import (
 	"math"
 	"strconv"
 
+	"github.com/brundtoe/go-geografi/pkg/mgrs_to_utm"
 	"github.com/brundtoe/go-geografi/pkg/utils"
-	"github.com/brundtoe/go-geografi/pkg/utmabs"
 )
 
 func main() {
@@ -45,9 +45,9 @@ func main() {
 
 }
 func transform(ka []string) {
-	koord := utmabs.Mgrs{Zone: ka[8], Belt: ka[9], Kmkv: ka[10], East: ka[11], North: ka[12], Town: ka[1]}
+	koord := mgrs_to_utm.Mgrs{Zone: ka[8], Belt: ka[9], Kmkv: ka[10], East: ka[11], North: ka[12], Town: ka[1]}
 
-	result, err := utmabs.UtmAbs(koord)
+	result, err := mgrs_to_utm.UtmAbs(koord)
 
 	log.SetPrefix("Error: ")
 	log.SetFlags(0)
@@ -63,10 +63,10 @@ func transform(ka []string) {
 	easting, err := strconv.ParseFloat(ka[13], 64)
 	northing, _ := strconv.ParseFloat(ka[14], 64)
 
-	if math.Abs(easting-result.Easting) > 1 {
+	if math.Abs(easting-result.Easting) >= 1 {
 		fmt.Print(" East ")
 	}
-	if math.Abs(northing-result.Northing) > 1 {
+	if math.Abs(northing-result.Northing) >= 1 {
 		fmt.Print(" North ")
 	}
 

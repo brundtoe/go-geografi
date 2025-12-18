@@ -1,4 +1,3 @@
 // Package utmabs
 // Conversion from MGRS to UTM
-//
-package utmabs
+package mgrs_to_utm

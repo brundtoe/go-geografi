@@ -1,4 +1,4 @@
-package utmabs
+package mgrs_to_utm
 
 import (
 	"strings"

@@ -1,5 +1,10 @@
 # Changelog
 
+## 18. december 2025
+
+Ændringer
+- package utmabs omdøbt til mgrs_to_utm som beskrver transformationen
+
 ## 16. december 2025
 
 Ændringer:
