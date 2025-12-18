@@ -60,7 +60,10 @@ Filen to_wgs84.go anvender pkg/geoutm
 
 Filen milgrid_to_wgs84.go anvender pkg/geoutm
 
-    Transformation af MGRS og USNG til Wgs84 med visning af evt difference
+    Transformation af MGRS og USNG til Wgs84 med visning af difference
+
+Der er forskelle på konverteringen fra UTM -> wgs84 og den samme fra MGSR hhv UNSG fordi 
+UTM earsting og northing er float med to decimaler og MGSR og USNG er float uden decimaler
 
 
 ## Dokumentation
