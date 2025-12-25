@@ -20,18 +20,13 @@ type City struct {
 }
 
 func (city *City) CityToMgrs() MGRS {
-	location := city.Geoloc
-	mgrs, _ := location.ToMGRS(1)
+	mgrs, _ := city.Geoloc.ToMGRS(1)
 	return mgrs
 
 }
 
 func (city *City) CityToUsng() USNG {
-	location := LL{
-		Lat: city.Geoloc.Lat,
-		Lon: city.Geoloc.Lon,
-	}
-	utm := location.ToUTM()
+	utm := city.Geoloc.ToUTM()
 	usng := utm.ToUSNG(1)
 	return usng
 
