@@ -6,6 +6,7 @@
     - go opdateret til fra 1.23 til 1.25.5
     - forenklet city.go funktionerne CityToMGRS og CityToUSNG
     - renamed cmd folder examples to show the transformation in action
+    - revideret dokumentationen
 
 ## 18. december 2025
 
