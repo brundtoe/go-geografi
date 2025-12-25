@@ -1,9 +1,16 @@
 # Changelog
 
+## 25. december 2025
+
+Ændringer:
+    - go opdateret til fra 1.23 til 1.25.5
+    - forenklet city.go funktionerne CityToMGRS og CityToUSNG
+    - renamed cmd folder examples to show the transformation in action
+
 ## 18. december 2025
 
 Ændringer
-- package utmabs omdøbt til mgrs_to_utm som beskrver transformationen
+- package utmabs omdøbt til mgrs_to_utm som beskriver transformationen
 
 ## 16. december 2025
 
@@ -13,12 +20,10 @@
 
 Tilføjelser:
 - to_wgs84.go transformerer utm til wgs84
-- milgrid_to-qgs84.go transformerer milgrid og usng til wgs84
+- milgrid_to-qgs84.go transformerer mgrs og usng til wgs84
 
 Fejlrettelser:
 - utm.toMGRS og utm.toUSNG rettet fejl i trunkering af resultatet 
-
-
 
 ## 15. december 2025
 

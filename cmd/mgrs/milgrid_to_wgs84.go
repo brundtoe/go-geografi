@@ -57,10 +57,17 @@ func transformMilGrid(record []string) {
 	usngLL, _, _ := usng.ToLL()
 	fmt.Printf("%-18s %18s %18s %20s %20s", location.Name, milGrid, usng, milGridLL, location.Geoloc)
 
+	/**
+	 * Check if milGrid og usng conversion to Wgs84 is the same
+
+	 */
 	if milGridLL != usngLL {
 		fmt.Printf("MilGrid and USNG differ for %s", location.Name)
 	}
-
+	/**
+	 * Check if milGrid conversion to Wgs84 is the same as the master wgs84 location i city object
+	 * The difference is due to milGrid and usng being integers
+	 */
 	if math.Abs(milGridLL.Lon-location.Geoloc.Lon) > 0.0001 || math.Abs(milGridLL.Lat-location.Geoloc.Lat) > 0.0001 {
 		fmt.Printf("MilGrid and Geolocation differ for %s", location.Name)
 	}

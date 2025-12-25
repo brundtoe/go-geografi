@@ -44,6 +44,10 @@ func main() {
 
 }
 
+/**
+ * Transform LL to MGRS og USNG
+ */
+
 func transformMGRS(record []string) {
 	location := mgrs.City{}
 	location.BuildCity(record)
