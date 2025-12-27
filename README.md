@@ -1,6 +1,6 @@
 # Geografi
 
-Projektet indeholder tre packages
+Projektet indeholder to packages
 
 - mgrs, er en justeret kopi af https://github.com/klaus-tockloth/coco, som er en delvis portering til golang af https://github.com/proj4js/mgrs
 - taylor, der er en Go implementering af Chuck taylors oprindelige WGS84 konvertering mellem lat/lon og UTM
@@ -15,12 +15,6 @@ Clone projektet https://github.com/brundtoe/go-geografi.git
 package taylor
 ```shell
     cd pkg/taylor
-    go test -v 
-```
-Package mgrs_to_utm
-
-```shell
-    cd pkg/mgrs_to_utm
     go test -v 
 ```
 
@@ -42,9 +36,6 @@ Filen cmd/cities/cities.go
 
     Demo af indlæsning af filen cities.csv
 
-Filen cmd/mgrs_to_utm/utmabs.go anvender ED50 modellen til konverteringen
-    
-    Transformation af MGRS 32V NJ 948757 99059 til UTM 32V 5948757 6399059 
 
 Filen cmd/taylor/utmgeo.go anvender pkg/taylor
 

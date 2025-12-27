@@ -1,5 +1,11 @@
 # Changelog
 
+
+## Tag v1.0.0 - 27. december 2025
+
+Breaking
+- fjernet den gamle mgrs utm fra Landinspektøren - er overflødig
+
 ## 25. december 2025
 
 Ændringer:
