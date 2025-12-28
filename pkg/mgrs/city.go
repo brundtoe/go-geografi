@@ -1,6 +1,8 @@
 package mgrs
 
-import "strconv"
+import (
+	"strconv"
+)
 
 type City struct {
 	Name         string
@@ -10,9 +12,7 @@ type City struct {
 	Population   int64
 	Geoloc       LL
 	Utm          UTM
-	Zone         int64
-	Easting      float64
-	Northing     float64
+	kmKv         string
 	Usng         USNG
 	Mgrs         MGRS
 	East         int64
@@ -28,14 +28,14 @@ func (city *City) BuildCity(koord []string) {
 	city.Geoloc.Lat, _ = strconv.ParseFloat(koord[6], 64)
 	city.Geoloc.Lon, _ = strconv.ParseFloat(koord[7], 64)
 	zoneNumber, _ := strconv.ParseInt(koord[8], 10, 64)
-	city.Utm.ZoneNumber = int(zoneNumber)
 	zoneLetter := []byte(koord[9])
+	city.Utm.ZoneNumber = int(zoneNumber)
 	city.Utm.ZoneLetter = zoneLetter[0]
 	city.Utm.Easting, _ = strconv.ParseFloat(koord[13], 64)
 	city.Utm.Northing, _ = strconv.ParseFloat(koord[14], 64)
+	city.kmKv = koord[10]
 	city.Usng = city.Utm.ToUSNG(1)
 	city.Mgrs = city.Utm.ToMGRS(1)
-	//	city.East, _ = strconv.ParseInt(koord[11], 10, 64)
-	//	city.North, _ = strconv.ParseInt(koord[12], 10, 64)
-
+	city.East, _ = strconv.ParseInt(koord[11], 10, 64)
+	city.North, _ = strconv.ParseInt(koord[12], 10, 64)
 }

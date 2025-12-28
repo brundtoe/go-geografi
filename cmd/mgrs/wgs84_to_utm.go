@@ -50,10 +50,9 @@ func fromWgs84toUtm(record []string) {
 	location := mgrs.City{}
 	location.BuildCity(record)
 	utm := location.Geoloc.ToUTM()
-	fmt.Printf("%-18s %25s %25s", location.Name, location.Utm, utm)
 
 	if strings.Compare(location.Utm.String(), utm.String()) != 0 {
-		fmt.Print(" Transformed UTM differs")
+		fmt.Printf("%-18s %25s %25s", location.Name, location.Utm, utm)
+		fmt.Println(" Transformed UTM differs")
 	}
-	fmt.Println("")
 }
