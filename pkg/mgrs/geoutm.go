@@ -38,11 +38,21 @@ func (ll LL) String() string {
 	return fmt.Sprintf("%.6f %.6f", ll.Lat, ll.Lon)
 }
 
-// MGRS defines cordinate in MGRS/UTMREF
+// MGRS defines coordinate in MGRS/UTM
 type MGRS string
 
-// USNG defines cordinate in USNG format
+// String returns the stringified MGRS object
+func (mgrs MGRS) String() string {
+	return string(mgrs)
+}
+
+// USNG defines coordinate in USNG format
 type USNG string
+
+// String returns the stringified USNG object
+func (usng USNG) String() string {
+	return string(usng)
+}
 
 // setOriginColumnLetters defines the column letters (for easting) of the lower left value, per set.
 const setOriginColumnLetters = "AJSAJS"
@@ -91,7 +101,7 @@ func (ll LL) ToUSNG(accuracy int) (USNG, error) {
 }
 
 /*
-ToLL converts MGRS/UTMREF to Lon Lat.
+ToLL converts MGRS/UTM to Lon Lat.
 */
 func (mgrs MGRS) ToLL() (LL, int, error) {
 
@@ -109,7 +119,7 @@ func (mgrs MGRS) ToLL() (LL, int, error) {
 }
 
 /*
-ToLL converts USNG/UTMREF to Lon Lat.
+ToLL converts USNG/UTM to Lon Lat.
 */
 func (usng USNG) ToLL() (LL, int, error) {
 
@@ -504,7 +514,7 @@ func getLetter100kID(column, row, parm int) string {
 }
 
 /*
-ToUTM converts MGRS/UTMREF to UTM.
+ToUTM converts MGRS/UTM to UTM.
 */
 func (mgrs MGRS) ToUTM() (UTM, int, error) {
 
