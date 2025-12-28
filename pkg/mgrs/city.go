@@ -4,6 +4,23 @@ import (
 	"strconv"
 )
 
+const (
+	name = iota + 1
+	zip
+	municipality
+	region
+	population
+	lat
+	lon
+	zone
+	belt
+	kmKv
+	east
+	north
+	easting
+	northing
+)
+
 type City struct {
 	Name         string
 	Zip          string
@@ -20,22 +37,22 @@ type City struct {
 }
 
 func (city *City) BuildCity(koord []string) {
-	city.Name = koord[1]
-	city.Zip = koord[2]
-	city.Municipality = koord[3]
-	city.Region = koord[4]
-	city.Population, _ = strconv.ParseInt(koord[5], 10, 64)
-	city.Geoloc.Lat, _ = strconv.ParseFloat(koord[6], 64)
-	city.Geoloc.Lon, _ = strconv.ParseFloat(koord[7], 64)
-	zoneNumber, _ := strconv.ParseInt(koord[8], 10, 64)
-	zoneLetter := []byte(koord[9])
+	city.Name = koord[name]
+	city.Zip = koord[zip]
+	city.Municipality = koord[municipality]
+	city.Region = koord[region]
+	city.Population, _ = strconv.ParseInt(koord[population], 10, 64)
+	city.Geoloc.Lat, _ = strconv.ParseFloat(koord[lat], 64)
+	city.Geoloc.Lon, _ = strconv.ParseFloat(koord[lon], 64)
+	zoneNumber, _ := strconv.ParseInt(koord[zone], 10, 64)
+	zoneLetter := []byte(koord[belt])
 	city.Utm.ZoneNumber = int(zoneNumber)
 	city.Utm.ZoneLetter = zoneLetter[0]
-	city.Utm.Easting, _ = strconv.ParseFloat(koord[13], 64)
-	city.Utm.Northing, _ = strconv.ParseFloat(koord[14], 64)
-	city.kmKv = koord[10]
+	city.Utm.Easting, _ = strconv.ParseFloat(koord[easting], 64)
+	city.Utm.Northing, _ = strconv.ParseFloat(koord[northing], 64)
+	city.kmKv = koord[kmKv]
 	city.Usng = city.Utm.ToUSNG(1)
 	city.Mgrs = city.Utm.ToMGRS(1)
-	city.East, _ = strconv.ParseInt(koord[11], 10, 64)
-	city.North, _ = strconv.ParseInt(koord[12], 10, 64)
+	city.East, _ = strconv.ParseInt(koord[east], 10, 64)
+	city.North, _ = strconv.ParseInt(koord[north], 10, 64)
 }

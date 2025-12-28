@@ -9,6 +9,7 @@ Breaking
 Ændringer
 - geoutm.go Tilføjet en ny funktion LL toUSNG 
 - ny cmd wgs84_to_utm.go 
+- City.go tilføjet enum til indlæsning af data fra csv
 
 ## Tag v1.0.0 - 27. december 2025
 
