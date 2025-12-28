@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Proj4js mgrs" type="GoApplicationRunConfiguration" factoryName="Go Application">
+  <configuration default="false" name="wgs84 to mgrs" type="GoApplicationRunConfiguration" factoryName="Go Application">
     <module name="geografi" />
     <working_directory value="$PROJECT_DIR$" />
     <kind value="FILE" />

@@ -319,7 +319,7 @@ func getLetterDesignator(lat float64) byte {
 }
 
 /*
-ToMGRS converts UTM to MGRS/UTMREF.
+ToMGRS converts UTM to MGRS/UTM.
 accuracy holds the wanted accuracy in meters. Possible values are 1, 10, 100, 1000 or 10000 meters.
 */
 func (utm UTM) ToMGRS(accuracy int) MGRS {
@@ -366,10 +366,10 @@ func (usng USNG) ToUTM() (UTM, int, error) {
 	return mgrs.ToUTM()
 }
 
-/**
-* ToUSN converts UTM to USNG.
-* accuracy holds the wanted accuracy in meters. Possible values are 1, 10, 100, 1000 or 10000 meters.
- */
+/*
+ToUSNG converts UTM to USNG.
+accuracy holds the wanted accuracy in meters. Possible values are 1, 10, 100, 1000 or 10000 meters.
+*/
 func (utm UTM) ToUSNG(accuracy int) USNG {
 
 	// meters to number of digits

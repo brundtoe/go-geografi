@@ -38,13 +38,13 @@ func main() {
 		}
 		// The first line contains field names
 		if record[1] != "City" {
-			transformWgs84(record)
+			fromUtmToWgs84(record)
 		}
 	}
 
 }
 
-func transformWgs84(record []string) {
+func fromUtmToWgs84(record []string) {
 	location := mgrs.City{}
 	location.BuildCity(record)
 	ll, _ := location.Utm.ToLL()

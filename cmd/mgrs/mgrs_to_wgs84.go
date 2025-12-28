@@ -40,13 +40,13 @@ func main() {
 		// The first line contains field names
 
 		if record[1] != "City" {
-			transformMilGrid(record)
+			fromMgrsToLL(record)
 		}
 	}
 
 }
 
-func transformMilGrid(record []string) {
+func fromMgrsToLL(record []string) {
 	location := mgrs.City{}
 	location.BuildCity(record)
 	//fixme foranstillede nuller for east og north
