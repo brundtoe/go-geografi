@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Test Proj4js mgrs" type="GoTestRunConfiguration" factoryName="Go Test">
+    <module name="geografi" />
+    <working_directory value="$PROJECT_DIR$/pkg/mgrs" />
+    <root_directory value="$PROJECT_DIR$" />
+    <kind value="FILE" />
+    <package value="github.com/brundtoe/go-geografi/pkg/geoutm" />
+    <directory value="$PROJECT_DIR$" />
+    <filePath value="$PROJECT_DIR$/pkg/mgrs/geoutm_test.go" />
+    <framework value="gotest" />
+    <method v="2" />
+  </configuration>
+</component>

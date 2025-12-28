@@ -49,7 +49,7 @@ Filen cmd/mgrs/utm_to_wgs84.go anvender pkg/geoutm
 
     Transformation af UTM til Wgs84 med visning af evt difference
 
-Filen cmd/mgrs/milgrid_to_wgs84.go anvender pkg/geoutm
+Filen cmd/mgrs/mgrs_usng_to_wgs84.go anvender pkg/geoutm
 
     Transformation af MGRS og USNG til Wgs84 med visning af difference
 

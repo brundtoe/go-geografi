@@ -38,7 +38,7 @@ func main() {
 		}
 		// The first line contains field names
 		if record[1] != "City" {
-			transformMGRS(record)
+			transformLLtoMGRS(record)
 		}
 	}
 
@@ -48,18 +48,22 @@ func main() {
  * Transform LL to MGRS og USNG
  */
 
-func transformMGRS(record []string) {
+func transformLLtoMGRS(record []string) {
 	location := mgrs.City{}
 	location.BuildCity(record)
 	// de to funktioner kalder undervejs LL.ToUTM()
-	milgrid := location.CityToMgrs()
-	usng := location.CityToUsng()
-	fmt.Printf("%-18s %s %s", location.Name, milgrid, usng)
+	mgrs, _ := location.Geoloc.ToMGRS(1)
+	usng, _ := location.Geoloc.ToUSNG(1)
+	fmt.Printf("%-18s %s %s", location.Name, mgrs, usng)
+
+	if strings.Compare(string(mgrs), string(usng.ToMGRS())) != 0 {
+		fmt.Print(" MGRS og USNG differ")
+	}
 
 	east := string(usng[7:12])
 	north := string(usng[13:18])
-	mgrsEast := string(milgrid[5:10])
-	mgrsNorth := string(milgrid[10:15])
+	mgrsEast := string(mgrs[5:10])
+	mgrsNorth := string(mgrs[10:15])
 	if strings.Compare(east, record[11]) != 0 || strings.Compare(mgrsEast, record[11]) != 0 {
 		fmt.Print(" East")
 	}
