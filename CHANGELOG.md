@@ -8,6 +8,7 @@ Breaking
 
 Ændringer
 - geoutm.go Tilføjet en ny funktion LL toUSNG 
+- ny cmd wgs84_to_utm.go 
 
 ## Tag v1.0.0 - 27. december 2025
 

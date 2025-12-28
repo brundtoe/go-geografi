@@ -41,15 +41,19 @@ Filen cmd/taylor/utmgeo.go anvender pkg/taylor
 
     Transfomration fra LatLonToUTMXX og tilbage med UTMXYToLatLon med visning af evt difference
 
-Filen cmd/mgrs/wgs84_to_mgrs.go anvender pkg/geoutm
+Filen cmd/mgrs/wgs84_to_utm.go anvender pkg/mgrs
 
-    Transformation af lat lon til MGRS opg USNG med visning af evt difference
+    Transformation af lat lon til UTM med visning af evt difference
 
-Filen cmd/mgrs/utm_to_wgs84.go anvender pkg/geoutm
+Filen cmd/mgrs/utm_to_wgs84.go anvender pkg/mgrs
 
     Transformation af UTM til Wgs84 med visning af evt difference
 
-Filen cmd/mgrs/mgrs_usng_to_wgs84.go anvender pkg/geoutm
+Filen cmd/mgrs/wgs84_to_mgrs.go anvender pkg/mgrs
+
+    Transformation af lat lon til MGRS opg USNG med visning af evt difference
+
+Filen cmd/mgrs/mgrs_usng_to_wgs84.go anvender pkg/mgrs
 
     Transformation af MGRS og USNG til Wgs84 med visning af difference
 
