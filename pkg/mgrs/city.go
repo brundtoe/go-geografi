@@ -13,23 +13,10 @@ type City struct {
 	Zone         int64
 	Easting      float64
 	Northing     float64
-	Belt         string
-	Kmkv         string
+	Usng         USNG
+	Mgrs         MGRS
 	East         int64
 	North        int64
-}
-
-func (city *City) CityToMgrs() MGRS {
-	mgrs, _ := city.Geoloc.ToMGRS(1)
-	return mgrs
-
-}
-
-func (city *City) CityToUsng() USNG {
-	utm := city.Geoloc.ToUTM()
-	usng := utm.ToUSNG(1)
-	return usng
-
 }
 
 func (city *City) BuildCity(koord []string) {
@@ -46,8 +33,9 @@ func (city *City) BuildCity(koord []string) {
 	city.Utm.ZoneLetter = zoneLetter[0]
 	city.Utm.Easting, _ = strconv.ParseFloat(koord[13], 64)
 	city.Utm.Northing, _ = strconv.ParseFloat(koord[14], 64)
-	city.Kmkv = koord[10]
-	city.East, _ = strconv.ParseInt(koord[11], 10, 64)
-	city.North, _ = strconv.ParseInt(koord[12], 10, 64)
+	city.Usng = city.Utm.ToUSNG(1)
+	city.Mgrs = city.Utm.ToMGRS(1)
+	//	city.East, _ = strconv.ParseInt(koord[11], 10, 64)
+	//	city.North, _ = strconv.ParseInt(koord[12], 10, 64)
 
 }

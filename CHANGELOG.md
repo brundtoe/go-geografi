@@ -1,5 +1,13 @@
 # Changelog
 
+## Tag v1.0.1 - 28. december 2025
+
+Breaking
+- Class cities build City opretter to nye felter MGRS og USNG ved at kalde Utm.toMGRS og UTM.toUSNG
+- Class Cities fjernet cityToMGRS og cityToUSNG
+
+Ændringer
+- geoutm.go Tilføjet en ny funktion LL toUSNG 
 
 ## Tag v1.0.0 - 27. december 2025
 
