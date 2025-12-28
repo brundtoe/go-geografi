@@ -82,6 +82,15 @@ func (ll LL) ToMGRS(accuracy int) (MGRS, error) {
 }
 
 /*
+ToUSNG converts Lon Lat to USNG.
+accuracy holds the wanted accuracy in meters. Possible values are 1, 10, 100, 1000 or 10000 meters.
+*/
+func (ll LL) ToUSNG(accuracy int) (USNG, error) {
+	utm := ll.ToUTM()
+	return utm.ToUSNG(accuracy), nil
+}
+
+/*
 ToLL converts MGRS/UTMREF to Lon Lat.
 */
 func (mgrs MGRS) ToLL() (LL, int, error) {
