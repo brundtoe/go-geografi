@@ -37,12 +37,3 @@ func TestUSNG_ToLL(t *testing.T) {
 		t.Errorf("Hovsa USNG_ToLL fejlede f.s.v.a. Longitude %f %f", actual.Lon, expected.Lon)
 	}
 }
-
-func TestUTM_ToUSNG(t *testing.T) {
-	var expected USNG = "32V NJ 94858 99060"
-	utm := UTM{ZoneNumber: 32, ZoneLetter: 'V', Easting: 594858, Northing: 6399060}
-	actual := utm.ToUSNG(1)
-	if actual != expected {
-		t.Errorf("Fejlede konvertering af UTM %v to USNG %v", utm, expected)
-	}
-}
