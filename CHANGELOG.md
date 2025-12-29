@@ -1,6 +1,6 @@
 # Changelog
 
-## tag 29. december 2025
+## Tag v2.0.0 - 29. december 2025
 
 Ændringer
 - Refaktoreret utmToMGRS og utmToUSNG ekstraheret fælles logik fra funktioktionerne til utm.buildGrid
