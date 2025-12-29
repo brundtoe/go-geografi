@@ -15,7 +15,7 @@ Remarks:
 - https://github.com/chrisveness/geodesy/blob/master/test/utm-mgrs-tests.js
 */
 
-package mgrs
+package proj
 
 import (
 	"fmt"

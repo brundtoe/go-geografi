@@ -7,7 +7,7 @@ import (
 	"log"
 	"math"
 
-	"github.com/brundtoe/go-geografi/pkg/mgrs"
+	"github.com/brundtoe/go-geografi/pkg/proj"
 	"github.com/brundtoe/go-geografi/pkg/utils"
 )
 
@@ -47,7 +47,7 @@ func main() {
 }
 
 func fromMgrsToLL(record []string) {
-	location := mgrs.City{}
+	location := proj.City{}
 	location.BuildCity(record)
 	//fixme foranstillede nuller for east og north
 	//to build usng location

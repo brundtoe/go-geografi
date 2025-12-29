@@ -1,4 +1,4 @@
-package mgrs
+package proj
 
 import (
 	"strconv"

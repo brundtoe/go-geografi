@@ -2,9 +2,11 @@
 
 Projektet indeholder to packages
 
-- mgrs, er en justeret kopi af https://github.com/klaus-tockloth/coco, som er en delvis portering til golang af https://github.com/proj4js/mgrs
+- proj, er en justeret kopi af https://github.com/klaus-tockloth/coco, som er en delvis portering til golang af https://github.com/proj4js/mgrs
 - taylor, der er en Go implementering af Chuck taylors oprindelige WGS84 konvertering mellem lat/lon og UTM
-- mgrs_to_utm, der er en omregning fra Military Grid System (MGRS) til UTM. Er porterete fra python/geografi
+
+Projetet er en refaktoreret udgave af https://github.com/klaus-tockloth/coco
+- Den oprindelige fil `coco.go` er opdelt i en fil pr. type som er golang best practice og langt mere overskuelig
 
 ## Installation
 
@@ -18,9 +20,9 @@ package taylor
     go test -v 
 ```
 
-Package mgrs
+Package proj
 ```shell
-```cd pkg/mgrs
+```cd pkg/proj
   go test -v
 
 ## Eksempler
@@ -41,19 +43,19 @@ Filen cmd/taylor/utmgeo.go anvender pkg/taylor
 
     Transfomration fra LatLonToUTMXX og tilbage med UTMXYToLatLon med visning af evt difference
 
-Filen cmd/mgrs/wgs84_to_utm.go anvender pkg/mgrs
+Filen cmd/proj/wgs84_to_utm.go anvender pkg/mgrs
 
     Transformation af lat lon til UTM med visning af evt difference
 
-Filen cmd/mgrs/utm_to_wgs84.go anvender pkg/mgrs
+Filen cmd/proj/utm_to_wgs84.go anvender pkg/mgrs
 
     Transformation af UTM til Wgs84 med visning af evt difference
 
-Filen cmd/mgrs/wgs84_to_mgrs.go anvender pkg/mgrs
+Filen cmd/proj/wgs84_to_mgrs.go anvender pkg/mgrs
 
     Transformation af lat lon til MGRS opg USNG med visning af evt difference
 
-Filen cmd/mgrs/mgrs_usng_to_wgs84.go anvender pkg/mgrs
+Filen cmd/proj/mgrs_usng_to_wgs84.go anvender pkg/mgrs
 
     Transformation af MGRS og USNG til Wgs84 med visning af difference
 

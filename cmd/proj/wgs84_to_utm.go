@@ -7,7 +7,7 @@ import (
 	"log"
 	"strings"
 
-	"github.com/brundtoe/go-geografi/pkg/mgrs"
+	"github.com/brundtoe/go-geografi/pkg/proj"
 	"github.com/brundtoe/go-geografi/pkg/utils"
 )
 
@@ -47,7 +47,7 @@ func main() {
 }
 
 func fromWgs84toUtm(record []string) {
-	location := mgrs.City{}
+	location := proj.City{}
 	location.BuildCity(record)
 	utm := location.Geoloc.ToUTM()
 

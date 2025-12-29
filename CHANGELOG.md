@@ -1,10 +1,12 @@
 # Changelog
 
-## 29. december 2025
+## tag 29. december 2025
 
 Ændringer
 - Refaktoreret utmToMGRS og utmToUSNG ekstraheret fælles logik fra funktioktionerne til utm.buildGrid
-- 
+- Refaktoreret utmgeo opdeling i en fil pr. type
+- Refaktoreret package mgrs til proj
+
 ## Tag v1.0.1 - 28. december 2025
 
 Breaking
