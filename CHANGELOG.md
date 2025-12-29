@@ -8,6 +8,7 @@
 - Refaktoreret test - ekstraheret til en separat fil pr type
 - Tilføjet yderligere test
 - udført code inspoection og opdateret
+- tilføjet funktion som transformerer MGRS til USNG
 
 ## Tag v2.0.0 - 29. december 2025
 
