@@ -46,14 +46,6 @@ func (mgrs MGRS) String() string {
 	return string(mgrs)
 }
 
-// USNG defines coordinate in USNG format
-type USNG string
-
-// String returns the stringified USNG object
-func (usng USNG) String() string {
-	return string(usng)
-}
-
 // setOriginColumnLetters defines the column letters (for easting) of the lower left value, per set.
 const setOriginColumnLetters = "AJSAJS"
 
@@ -104,26 +96,6 @@ func (ll LL) ToUSNG(accuracy int) (USNG, error) {
 ToLL converts MGRS/UTM to Lon Lat.
 */
 func (mgrs MGRS) ToLL() (LL, int, error) {
-
-	utm, accuracy, err := mgrs.ToUTM()
-	if err != nil {
-		return LL{}, 0, fmt.Errorf("error <%v> at mgrs.ToUTM()", err)
-	}
-
-	ll, err := utm.ToLL()
-	if err != nil {
-		return LL{}, 0, fmt.Errorf("error <%v> at utm.ToLL(), utm = %#v", err, utm)
-	}
-
-	return ll, accuracy, nil
-}
-
-/*
-ToLL converts USNG/UTM to Lon Lat.
-*/
-func (usng USNG) ToLL() (LL, int, error) {
-
-	mgrs := usng.ToMGRS()
 
 	utm, accuracy, err := mgrs.ToUTM()
 	if err != nil {
@@ -335,18 +307,6 @@ func getLetterDesignator(lat float64) byte {
 	}
 
 	return byte(LetterDesignator)
-}
-
-/*
-ToMGRS converts USNG to MGRS
-*/
-func (usng USNG) ToMGRS() MGRS {
-	return MGRS(strings.Replace(string(usng), " ", "", 3))
-}
-
-func (usng USNG) ToUTM() (UTM, int, error) {
-	mgrs := usng.ToMGRS()
-	return mgrs.ToUTM()
 }
 
 func (utm UTM) buildGrid(accuracy int, format string) string {
