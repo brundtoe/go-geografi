@@ -69,10 +69,30 @@ func TestUTM_ToMGRS(t *testing.T) {
 }
 
 func TestUTM_ToUSNG(t *testing.T) {
-	var expected USNG = "32V NJ 94858 99060"
-	utm := UTM{ZoneNumber: 32, ZoneLetter: 'V', Easting: 594858, Northing: 6399060}
-	actual := utm.ToUSNG(1)
-	if actual != expected {
-		t.Errorf("Fejlede konvertering af UTM %v to USNG %v", utm, expected)
+
+	var tests = []struct {
+		utm      UTM    // in
+		accuracy int    // in
+		usng     string // out
+	}{
+		// positive tests
+		{UTM{ZoneNumber: 32, ZoneLetter: 'U', Easting: 398973, Northing: 5756497}, 1, "32U LC 98973 56497"},
+		{UTM{ZoneNumber: 32, ZoneLetter: 'U', Easting: 398973, Northing: 5756497}, 10, "32U LC 9897 5649"},
+		{UTM{ZoneNumber: 32, ZoneLetter: 'U', Easting: 398973, Northing: 5756497}, 100, "32U LC 989 564"},
+		{UTM{ZoneNumber: 32, ZoneLetter: 'U', Easting: 398973, Northing: 5756497}, 1000, "32U LC 98 56"},
+		{UTM{ZoneNumber: 32, ZoneLetter: 'U', Easting: 398973, Northing: 5756497}, 10000, "32U LC 9 5"},
+		{UTM{ZoneNumber: 23, ZoneLetter: 'K', Easting: 611733, Northing: 7800614}, 1, "23K PU 11733 00614"},
+		// negative tests
+		// nothing to do here
+	}
+
+	for _, test := range tests {
+		usng := test.utm.ToUSNG(test.accuracy)
+		function := fmt.Sprintf("utm = %s, ToUSNG(%d)", test.utm, test.accuracy)
+		got := string(usng)
+		want := test.usng
+		if got != want {
+			t.Errorf("\n%s -> %s != %s\n", function, got, want)
+		}
 	}
 }
