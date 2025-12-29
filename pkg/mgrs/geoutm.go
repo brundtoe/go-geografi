@@ -338,42 +338,6 @@ func getLetterDesignator(lat float64) byte {
 }
 
 /*
-ToMGRS converts UTM to MGRS/UTM.
-accuracy holds the wanted accuracy in meters. Possible values are 1, 10, 100, 1000 or 10000 meters.
-*/
-func (utm UTM) ToMGRS(accuracy int) MGRS {
-
-	// meters to number of digits
-	switch accuracy {
-	case 1:
-		accuracy = 5
-	case 10:
-		accuracy = 4
-	case 100:
-		accuracy = 3
-	case 1000:
-		accuracy = 2
-	case 10000:
-		accuracy = 1
-	default:
-		accuracy = 5
-	}
-
-	// prepend with leading zeroes
-	seasting := "00000" + fmt.Sprintf("%.0f", math.Floor(utm.Easting))
-	snorthing := "00000" + fmt.Sprintf("%.0f", math.Floor(utm.Northing))
-
-	mgrs := fmt.Sprintf("%d%s%s%s%s",
-		utm.ZoneNumber,
-		string(utm.ZoneLetter),
-		get100kID(utm.Easting, utm.Northing, utm.ZoneNumber),
-		seasting[len(seasting)-5:len(seasting)-5+accuracy],
-		snorthing[len(snorthing)-5:len(snorthing)-5+accuracy])
-
-	return MGRS(mgrs)
-}
-
-/*
 ToMGRS converts USNG to MGRS
 */
 func (usng USNG) ToMGRS() MGRS {
@@ -385,40 +349,57 @@ func (usng USNG) ToUTM() (UTM, int, error) {
 	return mgrs.ToUTM()
 }
 
-/*
-ToUSNG converts UTM to USNG.
-accuracy holds the wanted accuracy in meters. Possible values are 1, 10, 100, 1000 or 10000 meters.
-*/
-func (utm UTM) ToUSNG(accuracy int) USNG {
+func (utm UTM) buildGrid(accuracy int, format string) string {
 
+	digits := 0
 	// meters to number of digits
 	switch accuracy {
 	case 1:
-		accuracy = 5
+		digits = 5
 	case 10:
-		accuracy = 4
+		digits = 4
 	case 100:
-		accuracy = 3
+		digits = 3
 	case 1000:
-		accuracy = 2
+		digits = 2
 	case 10000:
-		accuracy = 1
+		digits = 1
 	default:
-		accuracy = 5
+		digits = 5
 	}
 
 	// prepend with leading zeroes
 	seasting := "00000" + fmt.Sprintf("%.0f", math.Floor(utm.Easting))
 	snorthing := "00000" + fmt.Sprintf("%.0f", math.Floor(utm.Northing))
 
-	usng := fmt.Sprintf("%d%s %s %s %s",
+	east := seasting[len(seasting)-5 : len(seasting)-5+digits]
+	north := snorthing[len(snorthing)-5 : len(snorthing)-5+digits]
+	kmkv := get100kID(utm.Easting, utm.Northing, utm.ZoneNumber)
+	return fmt.Sprintf(format,
 		utm.ZoneNumber,
 		string(utm.ZoneLetter),
-		get100kID(utm.Easting, utm.Northing, utm.ZoneNumber),
-		seasting[len(seasting)-5:len(seasting)-5+accuracy],
-		snorthing[len(snorthing)-5:len(snorthing)-5+accuracy])
+		kmkv,
+		east,
+		north)
 
-	return USNG(usng)
+}
+
+/*
+ToMGRS converts UTM to MGRS/UTM.
+accuracy holds the wanted accuracy in meters. Possible values are 1, 10, 100, 1000 or 10000 meters.
+*/
+func (utm UTM) ToMGRS(accuracy int) MGRS {
+	return MGRS(utm.buildGrid(accuracy, "%d%s%s%s%s"))
+
+}
+
+/*
+ToUSNG converts UTM to USNG.
+accuracy holds the wanted accuracy in meters. Possible values are 1, 10, 100, 1000 or 10000 meters.
+*/
+func (utm UTM) ToUSNG(accuracy int) USNG {
+
+	return USNG(utm.buildGrid(accuracy, "%d%s %s %s %s"))
 }
 
 /*
