@@ -28,6 +28,7 @@ func main() {
 	r := csv.NewReader(fp)
 	r.Comma = ';'
 	i := 0
+	fmt.Println("Konverterer UTM til WGS84")
 	for {
 		record, err := r.Read()
 		if err == io.EOF {

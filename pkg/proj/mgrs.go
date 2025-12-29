@@ -93,7 +93,7 @@ func (mgrs MGRS) ToUTM() (UTM, int, error) {
 		return UTM{}, 0, fmt.Errorf("error <%v> at getNorthingFromChar()", err)
 	}
 
-	// We have a bug where the northing may be 2000000 too low. How do we know when to roll over?
+	// We have a bug where the northing may be 2.000.000 too low. How do we know when to roll over?
 	minNorthing, err := getMinNorthing(zoneLetter)
 	if err != nil {
 		return UTM{}, 0, fmt.Errorf("error <%v> at getMinNorthing()", err)

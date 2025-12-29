@@ -1,13 +1,14 @@
 // Package cities
 
-// Indlæsning af filen $HOME/geogrgafi/cites.csv og print til stdout
+// Indlæsning af filen cites.csv og print til stdout
 package main
 
 import (
 	"bufio"
 	"fmt"
-	"github.com/brundtoe/go-geografi/pkg/utils"
 	"log"
+
+	"github.com/brundtoe/go-geografi/pkg/utils"
 )
 
 func main() {

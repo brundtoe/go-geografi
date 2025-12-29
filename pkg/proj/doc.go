@@ -1,14 +1,14 @@
-//Package mgrs
+//Package proj provides methods for converting coordinates between WGS84 Lon Lat, UTM and MGRS/USNG.
 /*
 Purpose:
-- MGRS/UTMREF <-> UTM <-> Lon Lat
+- MGRS/UTM <-> UTM <-> Lon Lat
 
 Description:
-- Package for converting coordinates between WGS84 Lon Lat, UTM and MGRS/UTMREF.
+- Package for converting coordinates between WGS84 Lon Lat, UTM and MGRS/USNG.
 
 Releases:
-- v0.1.0 - 2019/05/09 : initial release
-- v0.2.0 - 2019/05/10 : coord formatting changed
+- v0.1.0 - 2019/05/09: initial release
+- v0.2.0 - 2019/05/10: coord formatting changed
 
 Author:
 - Klaus Tockloth
@@ -60,7 +60,7 @@ Links:
 
 */
 /*
-Package mgrs (coordinate conversion) provides methods for converting coordinates between WGS84 Lon Lat, UTM and MGRS/UTMREF.
+Package mgrs (coordinate conversion) provides methods for converting coordinates between WGS84 Lon Lat, UTM and MGRS/USNG.
 
 Supported conversions:
 

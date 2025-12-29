@@ -221,7 +221,7 @@ func getEastingFromChar(e byte, set int) (float64, error) {
 getNorthingFromChar gets the northing value that should be added to the other, secondary northing value.
 n holds the second letter of the MGRS 100k zone.
 set holds the MGRS table set number, which is dependent on the UTM zone number.
-Remark: You have to remember that Northings are determined from the equator, and the vertical
+Remark: You have to remember that Northing is determined from the equator, and the vertical
 cycle of letters mean a 2000000 additional northing meters. This happens
 approx. every 18 degrees of latitude. This method does *NOT* count any
 additional northings. You have to figure out how many 2000000 meters need
@@ -238,7 +238,7 @@ func getNorthingFromChar(n byte, set int) (float64, error) {
 	northingValue := 0.0
 	rewindMarker := false
 
-	for curRow != byte(n) {
+	for curRow != n {
 		curRow++
 		if curRow == charI {
 			curRow++
@@ -317,5 +317,5 @@ func getMinNorthing(zoneLetter byte) (float64, error) {
 		return northing, nil
 	}
 
-	return northing, fmt.Errorf("Invalid zone letter: %v", zoneLetter)
+	return northing, fmt.Errorf("invalid zone letter: %v", zoneLetter)
 }

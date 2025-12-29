@@ -7,6 +7,7 @@
 - Refaktoreret city.go - pseudo enum med prefix csv for at undgå shadowing i øvrige types
 - Refaktoreret test - ekstraheret til en separat fil pr type
 - Tilføjet yderligere test
+- udført code inspoection og opdateret
 
 ## Tag v2.0.0 - 29. december 2025
 

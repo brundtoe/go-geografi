@@ -34,7 +34,7 @@ func (ll LL) validateLL() (string, error) {
 
 /*
 ToMGRS converts Lon Lat to MGRS.
-accuracy holds the wanted accuracy in meters. Possible values are 1, 10, 100, 1000 or 10000 meters.
+accuracy holds the wanted accuracy in meters. Possible values are 1, 10, 100, 1000 or 10.000 meters.
 */
 func (ll LL) ToMGRS(accuracy int) (MGRS, error) {
 
@@ -50,7 +50,7 @@ func (ll LL) ToMGRS(accuracy int) (MGRS, error) {
 
 /*
 ToUSNG converts Lon Lat to USNG.
-accuracy holds the wanted accuracy in meters. Possible values are 1, 10, 100, 1000 or 10000 meters.
+accuracy holds the wanted accuracy in meters. Possible values are 1, 10, 100, 1000 or 10.000 meters.
 */
 func (ll LL) ToUSNG(accuracy int) (USNG, error) {
 	str, err := ll.validateLL()
@@ -116,7 +116,7 @@ func (ll LL) ToUTM() UTM {
 
 	UTMNorthing := (k0 * (M + N*math.Tan(LatRad)*(A*A/2+(5-T+9*C+4*C*C)*A*A*A*A/24.0+(61-58*T+T*T+600*C-330*eccPrimeSquared)*A*A*A*A*A*A/720.0)))
 	if Lat < 0.0 {
-		UTMNorthing += 10000000.0 // 10000000 meters offset for southern hemisphere
+		UTMNorthing += 10000000.0 // 10.000.000 meters offset for the Southern Hemisphere
 	}
 
 	utm := UTM{}

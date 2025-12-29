@@ -29,7 +29,8 @@ func main() {
 
 	r := csv.NewReader(fp)
 	r.Comma = ';'
-
+	i := 0
+	fmt.Println("Taylor: Konverterer fra WGS84 til UTM og tilbage")
 	for {
 		record, err := r.Read()
 		if err == io.EOF {
@@ -39,11 +40,14 @@ func main() {
 			log.Fatal(err)
 		}
 		// fmt.Println("Kilde: ", record[1], record[8], record[9], record[10], record[11], record[12])
-		// spring over konvertering af filens header
+		// spring over filens header
 		if record[8] != "Zone" {
 			transform(record)
+			i += 1
+			fmt.Print(".")
 		}
 	}
+	fmt.Printf("\nAntal linjer behandlet: %d\n", i)
 }
 
 func transform(koord []string) {
@@ -53,8 +57,7 @@ func transform(koord []string) {
 	longitude, _ := strconv.ParseFloat(koord[7], 64)
 
 	zone, _ := strconv.ParseInt(koord[8], 10, 64)
-	// todo her beregnes ikke den fulde UTM
-	// todo nyt eksemple som beregner usng
+
 	easting, northing := taylor.LatLonToUTMXY(latitude, longitude, int(zone))
 
 	lat, lon := taylor.UTMXYToLatLon(easting, northing, int(zone), false)
@@ -62,12 +65,12 @@ func transform(koord []string) {
 	// fmt.Printf("Lat\t %4f\n", taylor.RadToDeg(lat))
 	// fmt.Printf("Lon\t %4f\n", taylor.RadToDeg(lon))
 
-	fmt.Printf("%18s East %.2f \tNorth %.2f\n", koord[1], easting, northing)
+	//fmt.Printf("%18s East %.2f \tNorth %.2f\n", koord[1], easting, northing)
 
 	if math.Abs(latitude-taylor.RadToDeg(lat)) > diff {
-		fmt.Printf("%s Konvertering af latitude overskrider acceptabel tolerance\n", koord[1])
+		fmt.Printf("\n%s Konvertering af latitude overskrider acceptabel tolerance\n", koord[1])
 	}
 	if math.Abs(longitude-taylor.RadToDeg(lon)) > diff {
-		fmt.Printf("%s Konvertering af longitude overskrider acceptabel tolerance\n", koord[1])
+		fmt.Printf("\n%s Konvertering af longitude overskrider acceptabel tolerance\n", koord[1])
 	}
 }

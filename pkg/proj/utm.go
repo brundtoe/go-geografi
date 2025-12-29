@@ -118,7 +118,7 @@ func (utm UTM) buildGrid(accuracy int, format string) string {
 
 /*
 ToMGRS converts UTM to MGRS/UTM.
-accuracy holds the wanted accuracy in meters. Possible values are 1, 10, 100, 1000 or 10000 meters.
+accuracy holds the wanted accuracy in meters. Possible values are 1, 10, 100, 1000 or 10.000 meters.
 */
 func (utm UTM) ToMGRS(accuracy int) MGRS {
 	return MGRS(utm.buildGrid(accuracy, "%d%s%s%s%s"))

@@ -5,8 +5,6 @@ import (
 	"testing"
 )
 
-const diff float64 = 0.000001
-
 func TestUSNG_ToMGRS(t *testing.T) {
 	expected := "32VNJ9485899060"
 	var usng USNG = "32V NJ 94858 99060"

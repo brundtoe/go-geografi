@@ -6,7 +6,7 @@ import (
 )
 
 /**
- * Examples tests checker fmt.Printf("%s -> %s\n", utm, ll) mod linien efter // Output
+ * Examples tests checker fmt.Printf("%s -> %s\n", utm, ll) mod linjen efter // Output
  */
 
 func ExampleUTM_ToLL() {

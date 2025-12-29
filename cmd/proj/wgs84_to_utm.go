@@ -29,6 +29,7 @@ func main() {
 	r.Comma = ';'
 
 	i := 0
+	fmt.Println("Konverterer WGS84 til UTM - transformation for Vordingborg udenfor accepteret difference")
 	fmt.Printf("%-18s %-25s %-25s\n", "City", "City UTM", "Transformed UTM")
 	for {
 		record, err := r.Read()

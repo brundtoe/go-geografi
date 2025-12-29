@@ -17,8 +17,8 @@ func GetDataPath(part string, envvar string) (string, error) {
 	} else if hostType == "controller" {
 		return filepath.Join("/home/projects/devops/data", part), nil
 	} else if hostType == "" {
-		return "", errors.New("Envvar er fundet men der er ikke angivet en værdi")
+		return "", errors.New("envvar er fundet men der er ikke angivet en værdi")
 	} else {
-		return "", errors.New("Denne host type er ikke understøttet")
+		return "", errors.New("denne host type er ikke understøttet")
 	}
 }

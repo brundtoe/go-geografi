@@ -28,6 +28,7 @@ func main() {
 	r := csv.NewReader(fp)
 	r.Comma = ';'
 	i := 0
+	fmt.Println("MGRS: Konverterer MGRS og USNG til WGS84")
 	fmt.Printf("%-18s %18s %18s %20s %20s\n", "City", "MilGrid", "USNG", "MilGridLL", "Geolocation")
 	for {
 		record, err := r.Read()
