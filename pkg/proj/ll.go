@@ -19,12 +19,7 @@ func (ll LL) String() string {
 	return fmt.Sprintf("%.6f %.6f", ll.Lat, ll.Lon)
 }
 
-/*
-ToMGRS converts Lon Lat to MGRS.
-accuracy holds the wanted accuracy in meters. Possible values are 1, 10, 100, 1000 or 10000 meters.
-*/
-func (ll LL) ToMGRS(accuracy int) (MGRS, error) {
-
+func (ll LL) validateLL() (string, error) {
 	if ll.Lon < -180 || ll.Lon > 180 {
 		return "", fmt.Errorf("invalid longitude, lon = %v", ll.Lon)
 	}
@@ -34,7 +29,19 @@ func (ll LL) ToMGRS(accuracy int) (MGRS, error) {
 	if ll.Lat < -80 || ll.Lat > 84 {
 		return "", fmt.Errorf("polar regions below 80°S and above 84°N not supported, lat = %v", ll.Lat)
 	}
+	return "", nil
+}
 
+/*
+ToMGRS converts Lon Lat to MGRS.
+accuracy holds the wanted accuracy in meters. Possible values are 1, 10, 100, 1000 or 10000 meters.
+*/
+func (ll LL) ToMGRS(accuracy int) (MGRS, error) {
+
+	str, err := ll.validateLL()
+	if err != nil {
+		return MGRS(str), err
+	}
 	utm := ll.ToUTM()
 	mgrs := utm.ToMGRS(accuracy)
 
@@ -46,6 +53,10 @@ ToUSNG converts Lon Lat to USNG.
 accuracy holds the wanted accuracy in meters. Possible values are 1, 10, 100, 1000 or 10000 meters.
 */
 func (ll LL) ToUSNG(accuracy int) (USNG, error) {
+	str, err := ll.validateLL()
+	if err != nil {
+		return USNG(str), err
+	}
 	utm := ll.ToUTM()
 	return utm.ToUSNG(accuracy), nil
 }

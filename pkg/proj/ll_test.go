@@ -39,10 +39,10 @@ func TestLL_ToUTM(t *testing.T) {
 func TestLL_ToMGRS(t *testing.T) {
 
 	var tests = []struct {
-		ll       LL     // in
-		accuracy int    // in
-		mgrs     string // out
-		err      error  // out
+		ll       LL    // in
+		accuracy int   // in
+		mgrs     MGRS  // out
+		err      error // out
 	}{
 		// positive tests
 		{LL{Lat: 51.95, Lon: 7.53}, 1, "32ULC9897356497", nil},
@@ -63,6 +63,32 @@ func TestLL_ToMGRS(t *testing.T) {
 		function := fmt.Sprintf("ll = %s, ll.ToMGRS(%d)", test.ll, test.accuracy)
 		got := fmt.Sprintf("%s %v", mgrs, err)
 		want := fmt.Sprintf("%s %v", test.mgrs, test.err)
+		if got != want {
+			t.Errorf("\n%s -> %s != %s\n", function, got, want)
+		}
+	}
+}
+
+func TestLL_ToUSNG(t *testing.T) {
+	var tests = []struct {
+		ll       LL    // in
+		accuracy int   // in
+		usng     USNG  // out
+		err      error // out
+	}{
+		// positive tests
+		{LL{Lat: 51.95, Lon: 7.53}, 1, "32U LC 98973 56497", nil},
+		{LL{Lat: 51.95, Lon: 7.53}, 100, "32U LC 989 564", nil},
+		// negative tests
+		{LL{Lat: 51.95, Lon: 188.53}, 100, "", fmt.Errorf("invalid longitude, lon = 188.53")},
+		{LL{Lat: 88.95, Lon: 7.53}, 100, "", fmt.Errorf("polar regions below 80°S and above 84°N not supported, lat = 88.95")},
+	}
+
+	for _, test := range tests {
+		usng, err := test.ll.ToUSNG(test.accuracy)
+		function := fmt.Sprintf("ll = %s, ll.ToUSNG(%d)", test.ll, test.accuracy)
+		got := fmt.Sprintf("%s %v", usng, err)
+		want := fmt.Sprintf("%s %v", test.usng, test.err)
 		if got != want {
 			t.Errorf("\n%s -> %s != %s\n", function, got, want)
 		}
