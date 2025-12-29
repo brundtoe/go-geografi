@@ -68,3 +68,25 @@ func TestMGRS_ToLL(t *testing.T) {
 		}
 	}
 }
+
+func TestMGRS_ToUSNGS(t *testing.T) {
+	var tests = []struct {
+		mgrs MGRS
+		usng USNG
+	}{
+		{"32ULC9897356497", "32U LC 98973 56497"},
+		{"32ULC98975649", "32U LC 9897 5649"},
+		{"32ULC989564", "32U LC 989 564"},
+		{"32ULC9856", "32U LC 98 56"},
+		{"32ULC95", "32U LC 9 5"},
+	}
+
+	for _, test := range tests {
+		got := test.mgrs.ToUSNG()
+		want := test.usng
+
+		if got != want {
+			t.Errorf("mgrs.ToUSNG() = %s, want %s", got, want)
+		}
+	}
+}

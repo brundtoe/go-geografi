@@ -34,6 +34,18 @@ func (mgrs MGRS) ToLL() (LL, int, error) {
 	return ll, accuracy, nil
 }
 
+func (mgrs MGRS) ToUSNG() USNG {
+	zoneGrid := mgrs[0:3]
+	kmkv := mgrs[3:5]
+	rest := mgrs[5:]
+	digits := len(rest) / 2
+	east := mgrs[5 : 5+digits]
+	north := mgrs[5+digits:]
+	fmt.Printf("digits = %d\n", digits)
+	return USNG(zoneGrid + " " + kmkv + " " + east + " " + north)
+
+}
+
 /*
 ToUTM converts MGRS to UTM.
 */
