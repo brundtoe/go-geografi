@@ -4,6 +4,7 @@
 
 Ændringer:
 - refaktoreret cmds - der udskrives kun en linje i output når afvigelser er større end det acceptable niveau
+- Refaktoreret city.go - pseudo enum med prefix csv for at undgå shadowing i øvrige types
 
 ## Tag v2.0.0 - 29. december 2025
 
