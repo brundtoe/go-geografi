@@ -42,5 +42,9 @@ func (usng USNG) ToMGRS() MGRS {
 
 func (usng USNG) ToUTM() (UTM, int, error) {
 	mgrs := usng.ToMGRS()
-	return mgrs.ToUTM()
+	utm, accuracy, error := mgrs.ToUTM()
+	if error != nil {
+		return UTM{}, 0, error
+	}
+	return utm, int(accuracy), nil
 }
