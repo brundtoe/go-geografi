@@ -1,5 +1,10 @@
 # Changelog
 
+## 29. december 2025
+
+Ændringer:
+- refaktoreret cmds - der udskrives kun en linje i output når afvigelser er større end det acceptable niveau
+
 ## Tag v2.0.0 - 29. december 2025
 
 Ændringer

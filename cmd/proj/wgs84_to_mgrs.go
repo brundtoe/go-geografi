@@ -27,7 +27,7 @@ func main() {
 
 	r := csv.NewReader(fp)
 	r.Comma = ';'
-
+	i := 0
 	for {
 		record, err := r.Read()
 		if err == io.EOF {
@@ -37,11 +37,14 @@ func main() {
 			log.Fatal(err)
 		}
 		// The first line contains field names
+
 		if record[1] != "City" {
 			transformLLtoMGRS(record)
+			fmt.Print(".")
+			i += 1
 		}
 	}
-
+	fmt.Printf("\nAntal linjer behandlet: %d\n", i)
 }
 
 /**
@@ -54,10 +57,9 @@ func transformLLtoMGRS(record []string) {
 	// de to funktioner kalder undervejs LL.ToUTM()
 	mgrs, _ := location.Geoloc.ToMGRS(1)
 	usng, _ := location.Geoloc.ToUSNG(1)
-	fmt.Printf("%-18s %s %s", location.Name, mgrs, usng)
 
 	if strings.Compare(string(mgrs), string(usng.ToMGRS())) != 0 {
-		fmt.Print(" MGRS og USNG differ")
+		fmt.Printf(" MGRS og USNG differ  %-18s %s %s\n", location.Name, mgrs, usng)
 	}
 
 	east := string(usng[7:12])
@@ -65,10 +67,10 @@ func transformLLtoMGRS(record []string) {
 	mgrsEast := string(mgrs[5:10])
 	mgrsNorth := string(mgrs[10:15])
 	if strings.Compare(east, record[11]) != 0 || strings.Compare(mgrsEast, record[11]) != 0 {
-		fmt.Print(" East")
+		fmt.Printf("East %-18s %s %s\n", location.Name, mgrs, usng)
 	}
 	if strings.Compare(north, record[12]) != 0 || strings.Compare(mgrsNorth, record[12]) != 0 {
-		fmt.Print(" North")
+		fmt.Printf("North %-18s %s %s\n", location.Name, mgrs, usng)
+
 	}
-	fmt.Println("")
 }

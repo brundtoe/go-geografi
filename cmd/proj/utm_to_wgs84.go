@@ -27,7 +27,7 @@ func main() {
 
 	r := csv.NewReader(fp)
 	r.Comma = ';'
-
+	i := 0
 	for {
 		record, err := r.Read()
 		if err == io.EOF {
@@ -39,22 +39,23 @@ func main() {
 		// The first line contains field names
 		if record[1] != "City" {
 			fromUtmToWgs84(record)
+			i += 1
+			fmt.Print(".")
 		}
 	}
-
+	fmt.Printf("\nAntal linjer behandler: %d\n", i)
 }
 
 func fromUtmToWgs84(record []string) {
 	location := proj.City{}
 	location.BuildCity(record)
 	ll, _ := location.Utm.ToLL()
-	fmt.Printf("%20s %-18s", ll.String(), location.Name)
 
 	if math.Abs(ll.Lon-location.Geoloc.Lon) > 0.000001 {
-		fmt.Printf("%10.6f", location.Geoloc.Lon)
+		fmt.Printf("\nLongitude: %10.6f\n", location.Geoloc.Lon)
 	}
 	if math.Abs(ll.Lat-location.Geoloc.Lat) > 0.000001 {
-		fmt.Printf("Lat %10.6f", location.Geoloc.Lat)
+		fmt.Printf("\nLatitude %10.6f\n", location.Geoloc.Lat)
 	}
-	fmt.Println()
+
 }

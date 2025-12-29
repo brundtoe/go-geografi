@@ -28,6 +28,7 @@ func main() {
 	r := csv.NewReader(fp)
 	r.Comma = ';'
 
+	i := 0
 	fmt.Printf("%-18s %-25s %-25s\n", "City", "City UTM", "Transformed UTM")
 	for {
 		record, err := r.Read()
@@ -41,9 +42,11 @@ func main() {
 
 		if record[1] != "City" {
 			fromWgs84toUtm(record)
+			fmt.Print(".")
+			i += 1
 		}
 	}
-
+	fmt.Printf("\nAntal linjer behandlet: %d\n", i)
 }
 
 func fromWgs84toUtm(record []string) {
@@ -52,7 +55,7 @@ func fromWgs84toUtm(record []string) {
 	utm := location.Geoloc.ToUTM()
 
 	if strings.Compare(location.Utm.String(), utm.String()) != 0 {
-		fmt.Printf("%-18s %25s %25s", location.Name, location.Utm, utm)
+		fmt.Printf("\n%-18s %25s %25s", location.Name, location.Utm, utm)
 		fmt.Println(" Transformed UTM differs")
 	}
 }
