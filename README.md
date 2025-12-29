@@ -13,6 +13,11 @@ Projetet er en refaktoreret udgave af https://github.com/klaus-tockloth/coco
 Clone projektet https://github.com/brundtoe/go-geografi.git
 
 ## test
+Der er en stor dækningsgrad af test i package proj. 
+
+Alle funktioner i LL, UTM, MGRS og USNG er testes
+
+Nogle funktioner i utils.go er ikke unit testet. De testes implicit i tests af transformationer af LL, UTM, MGRS og USNG. 
 
 package taylor
 ```shell
