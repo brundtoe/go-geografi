@@ -10,7 +10,7 @@
 ## Tag v2.0.0 - 29. december 2025
 
 Ændringer
-- Refaktoreret utmToMGRS og utmToUSNG ekstraheret fælles logik fra funktioktionerne til utm.buildGrid
+- Refaktoreret utmToMGRS og utmToUSNG ekstraheret fælles logik fra funktionerne til utm.buildGrid
 - Refaktoreret utmgeo opdeling i en fil pr. type
 - Refaktoreret package mgrs til proj
 
