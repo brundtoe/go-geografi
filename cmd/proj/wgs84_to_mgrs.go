@@ -40,7 +40,7 @@ func main() {
 		// The first line contains field names
 
 		if record[1] != "City" {
-			transformLLtoMGRS(record)
+			TransformLLtoMGRS(record)
 			fmt.Print(".")
 			i += 1
 		}
@@ -48,11 +48,11 @@ func main() {
 	fmt.Printf("\nAntal linjer behandlet: %d\n", i)
 }
 
-/**
- * Transform LL to MGRS og USNG
- */
-
-func transformLLtoMGRS(record []string) {
+// TransformLLtoMGRS converts WGS84 to MGRS and USNG
+/*
+The resulting MGRS and USNG should equal the city.MGRS city.USNG locations.
+*/
+func TransformLLtoMGRS(record []string) {
 	location := proj.City{}
 	location.BuildCity(record)
 	// de to funktioner kalder undervejs LL.ToUTM()

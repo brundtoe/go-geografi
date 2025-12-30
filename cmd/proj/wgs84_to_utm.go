@@ -42,7 +42,7 @@ func main() {
 		// The first line contains field names
 
 		if record[1] != "City" {
-			fromWgs84toUtm(record)
+			FromWgs84toUtm(record)
 			fmt.Print(".")
 			i += 1
 		}
@@ -50,7 +50,11 @@ func main() {
 	fmt.Printf("\nAntal linjer behandlet: %d\n", i)
 }
 
-func fromWgs84toUtm(record []string) {
+// FromWgs84toUtm converts WGS84 to UTM
+/*
+The resulting UTM should equal the city.UTM location.
+*/
+func FromWgs84toUtm(record []string) {
 	location := proj.City{}
 	location.BuildCity(record)
 	utm := location.Geoloc.ToUTM()

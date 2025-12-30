@@ -41,7 +41,7 @@ func main() {
 		// The first line contains field names
 
 		if record[1] != "City" {
-			fromMgrsToLL(record)
+			FromMgrsToLL(record)
 			i += 1
 			fmt.Print(".")
 		}
@@ -49,7 +49,11 @@ func main() {
 	fmt.Printf("\nAntal linjer behandler: %d\n", i)
 }
 
-func fromMgrsToLL(record []string) {
+// FromMgrsToLL converts MGRS and USNG to WGS84
+/*
+The accuracy of the conversion is limited by 0.0001 degrees.
+*/
+func FromMgrsToLL(record []string) {
 	location := proj.City{}
 	location.BuildCity(record)
 	//fixme foranstillede nuller for east og north
