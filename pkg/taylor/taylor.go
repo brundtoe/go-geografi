@@ -1,20 +1,3 @@
-// Package taylor
-
-// Original Javascript by Chuck Taylor
-// Port to C++ by Alex Hajnal
-//
-// *** THIS CODE USES 32-BIT FLOATS BY DEFAULT ***
-// *** For 64-bit double-precision edit UTM.h: undefine FLOAT_32 and define FLOAT_64
-//
-// This is a simple port of the code on the Geographic/UTM Coordinate Converter (1) page from Javascript to C++.
-// Using this you can easily pkg between UTM and WGS84 (latitude and longitude).
-// Accuracy seems to be around 50cm (I suspect rounding errors are limiting precision).
-// This code is provided as-is and has been minimally tested enjoy but use at your own risk!
-// The license for UTM.cpp and UTM.h is the same as the original Javascript:
-// "The C++ source code in UTM.cpp and UTM.h may be copied and reused without restriction."
-//
-// 1) http://home.hiwaay.net/~taylorc/toolbox/geography/geoutm.html
-
 package taylor
 
 import "math"
@@ -24,34 +7,37 @@ var smB = 6356752.314
 
 var UTMScaleFactor = 0.9996
 
-// DegToRad
-// Converts degrees to radians.
+// DegToRad Converts degrees to radians.
 func DegToRad(deg float64) float64 {
 	return deg / 180.0 * math.Pi
 }
 
-// RadToDeg
-// Converts radians to degrees.
+// RadToDeg Converts radians to degrees.
 func RadToDeg(rad float64) float64 {
 	return rad / math.Pi * 180.0
 }
 
 // ArcLengthOfMeridian
-// Computes the ellipsoidal distance from the equator to a point at a
-// given latitude.
-//
-// Reference: Hoffmann-Wellenhof, B., Lichtenegger, H., and Collins, J.,
-// GPS: Theory and Practice, 3rd ed.  New York: Springer-Verlag Wien, 1994.
-//
-// Inputs:
-//     phi - Latitude of the point, in radians.
-//
-// Globals:
-//     smA - Ellipsoid model major axis.
-//     smB - Ellipsoid model minor axis.
-//
-// Returns:
-//     The ellipsoidal distance of the point from the equator, in meters.
+/* Computes the ellipsoidal distance from the equator to a point at a
+given latitude.
+
+Reference: Hoffmann-Wellenhof, B., Lichtenegger, H., and Collins, J.
+
+ GPS: Theory and Practice, 3rd ed.  New York: Springer-Verlag Wien, 1994.
+
+ Inputs:
+
+	phi - Latitude of the point, in radians.
+
+ Globals:
+
+	smA - Ellipsoid model major axis.
+	smB - Ellipsoid model minor axis.
+
+ Returns:
+
+	The ellipsoidal distance of the point from the equator, in meters.
+*/
 func ArcLengthOfMeridian(phi float64) float64 {
 
 	/* Precalculate n */
@@ -86,11 +72,13 @@ func ArcLengthOfMeridian(phi float64) float64 {
 // Determines the central meridian for the given UTM zone.
 //
 // Inputs:
-//     zone - An integer value designating the UTM zone, range [1,60].
+//
+//	zone - An integer value designating the UTM zone, range [1,60].
 //
 // Returns:
-//   The central meridian for the given UTM zone, in radians
-//   Range of the central meridian is the radian equivalent of [-177,+177].
+//
+//	The central meridian for the given UTM zone, in radians
+//	Range of the central meridian is the radian equivalent of [-177,+177].
 func UTMCentralMeridian(zone int) float64 {
 	cmeridian := DegToRad(-183.0 + (float64(zone) * 6.0))
 	return cmeridian
@@ -102,13 +90,16 @@ func UTMCentralMeridian(zone int) float64 {
 // Mercator coordinates to ellipsoidal coordinates.
 //
 // Reference: Hoffmann-Wellenhof, B., Lichtenegger, H., and Collins, J.,
-//   GPS: Theory and Practice, 3rd ed.  New York: Springer-Verlag Wien, 1994.
+//
+//	GPS: Theory and Practice, 3rd ed.  New York: Springer-Verlag Wien, 1994.
 //
 // Inputs:
-//   y - The UTM northing coordinate, in meters.
+//
+//	y - The UTM northing coordinate, in meters.
 //
 // Returns:
-//   The footpoint latitude, in radians.
+//
+//	The footpoint latitude, in radians.
 func FootpointLatitude(y float64) float64 {
 
 	/* Precalculate n (Eq. 10.18) */
@@ -152,14 +143,15 @@ func FootpointLatitude(y float64) float64 {
 // GPS: Theory and Practice, 3rd ed.  New York: Springer-Verlag Wien, 1994.
 //
 // Inputs:
-//    phi - Latitude of the point, in radians.
-//    lambda - Longitude of the point, in radians.
-//    lambda0 - Longitude of the central meridian to be used, in radians.
+//
+//	phi - Latitude of the point, in radians.
+//	lambda - Longitude of the point, in radians.
+//	lambda0 - Longitude of the central meridian to be used, in radians.
 //
 // Returns:
-//    x - The x coordinate of the computed point.
-//    y - The y coordinate of the computed point.
 //
+//	x - The x coordinate of the computed point.
+//	y - The y coordinate of the computed point.
 func MapLatLonToXY(phi float64, lambda float64, lambda0 float64) (float64, float64) {
 	/* Precalculate ep2 */
 	ep2 := (math.Pow(smA, 2.0) - math.Pow(smB, 2.0)) / math.Pow(smB, 2.0)
@@ -215,24 +207,28 @@ func MapLatLonToXY(phi float64, lambda float64, lambda0 float64) (float64, float
 // the same as UTM a scale factor is required to pkg between them.
 //
 // Reference: Hoffmann-Wellenhof, B., Lichtenegger, H., and Collins, J.,
-//   GPS: Theory and Practice, 3rd ed.  New York: Springer-Verlag Wien, 1994.
+//
+//	GPS: Theory and Practice, 3rd ed.  New York: Springer-Verlag Wien, 1994.
 //
 // Inputs:
-//   x - The easting of the point, in meters.
-//   y - The northing of the point, in meters.
-//   lambda0 - Longitude of the central meridian to be used, in radians.
+//
+//	x - The easting of the point, in meters.
+//	y - The northing of the point, in meters.
+//	lambda0 - Longitude of the central meridian to be used, in radians.
 //
 // Returns:
-//   phi    - Latitude in radians.
-//   lambda - Longitude in radians.
+//
+//	phi    - Latitude in radians.
+//	lambda - Longitude in radians.
 //
 // Remarks:
-//   The local variables Nf, nuf2, tf, and tf2 serve the same purpose as
-//   N, nu2, t, and t2 in MapLatLonToXY, but they are computed with respect
-//   to the footpoint latitude phif.
 //
-//   x1frac, x2frac, x2poly, x3poly, etc. are to enhance readability and
-//   to optimize computations.
+//	The local variables Nf, nuf2, tf, and tf2 serve the same purpose as
+//	N, nu2, t, and t2 in MapLatLonToXY, but they are computed with respect
+//	to the footpoint latitude phif.
+//
+//	x1frac, x2frac, x2poly, x3poly, etc. are to enhance readability and
+//	to optimize computations.
 func MapXYToLatLon(x float64, y float64, lambda0 float64) (float64, float64) {
 
 	/* Get the value of phif, the footpoint latitude. */
@@ -313,16 +309,17 @@ func MapXYToLatLon(x float64, y float64, lambda0 float64) (float64, float64) {
 // Universal Transverse Mercator projection.
 //
 // Inputs:
-//   lat - Latitude of the point, in degrees.
-//   lon - Longitude of the point, in degrees.
-//   zone - UTM zone to be used for calculating values for x and y.
-//          If zone is less than 1 or greater than 60, the routine
-//          will determine the appropriate zone from the value of lon.
+//
+//	lat - Latitude of the point, in degrees.
+//	lon - Longitude of the point, in degrees.
+//	zone - UTM zone to be used for calculating values for x and y.
+//	       If zone is less than 1 or greater than 60, the routine
+//	       will determine the appropriate zone from the value of lon.
 //
 // Returns:
-//   x - The x coordinate (easting) of the computed point. (in meters)
-//   y - The y coordinate (northing) of the computed point. (in meters)
 //
+//	x - The x coordinate (easting) of the computed point. (in meters)
+//	y - The y coordinate (northing) of the computed point. (in meters)
 func LatLonToUTMXY(lat float64, lon float64, zone int) (float64, float64) {
 
 	if (zone < 1) || (zone > 60) {
@@ -349,12 +346,12 @@ func LatLonToUTMXY(lat float64, lon float64, zone int) (float64, float64) {
 // y - The northing of the point, in meters.
 // zone - The UTM zone in which the point lies.
 // southhemi - True if the point is in the southern hemisphere
-//               false otherwise.
+//
+//	false otherwise.
 //
 // Returns:
 // lat - The latitude of the point, in radians.
 // lon - The longitude of the point, in radians.
-//
 func UTMXYToLatLon(x float64, y float64, zone int, southHemi bool) (float64, float64) {
 
 	x -= 500000.0
