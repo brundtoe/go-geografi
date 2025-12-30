@@ -6,6 +6,21 @@ import (
 )
 
 // UTM defines coordinate in Universal Transverse Mercator
+/*
+UTM is a struct composed of utm zone, utm zone letter, easting and northing
+
+ For the city og Skagen: "32V 594857.92 6399059.92"
+	- Zone number: 32
+	- Zone letter: V
+	- Easting: 594857.92 meters
+	- Northing: 6399059.92 meters
+
+See also
+ - [MGRS]
+ - [USNG]
+ - https://en.wikipedia.org/wiki/Universal_Transverse_Mercator_coordinate_system
+
+*/
 type UTM struct {
 	ZoneNumber int
 	ZoneLetter byte
@@ -15,6 +30,8 @@ type UTM struct {
 
 /*
 String returns stringified UTM object.
+
+	For the city of Skagen: "32V 594857.92 6399059.92"
 */
 func (utm UTM) String() string {
 
@@ -22,7 +39,7 @@ func (utm UTM) String() string {
 }
 
 /*
-ToLL converts UTM to Lon Lat.
+ToLL converts UTM to laitude longitude.
 */
 func (utm UTM) ToLL() (LL, error) {
 
@@ -117,8 +134,9 @@ func (utm UTM) buildGrid(accuracy int, format string) string {
 }
 
 /*
-ToMGRS converts UTM to MGRS/UTM.
-accuracy holds the wanted accuracy in meters. Possible values are 1, 10, 100, 1000 or 10.000 meters.
+ToMGRS converts UTM to MGRS
+
+The accuracy holds the wanted accuracy in meters. Possible values are 1, 10, 100, 1000 or 10.000 meters.
 */
 func (utm UTM) ToMGRS(accuracy int) MGRS {
 	return MGRS(utm.buildGrid(accuracy, "%d%s%s%s%s"))
@@ -127,7 +145,8 @@ func (utm UTM) ToMGRS(accuracy int) MGRS {
 
 /*
 ToUSNG converts UTM to USNG.
-accuracy holds the wanted accuracy in meters. Possible values are 1, 10, 100, 1000 or 10000 meters.
+
+The accuracy holds the wanted accuracy in meters. Possible values are 1, 10, 100, 1000 or 10000 meters.
 */
 func (utm UTM) ToUSNG(accuracy int) USNG {
 

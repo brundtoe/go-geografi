@@ -9,15 +9,33 @@ import (
 )
 
 // MGRS defines coordinate in MGRS
+/*
+MGRS is a string composed of utm zone, utm zone letter, 100-km grid letter, easting and northing.
+
+ For the city of Roskilde: "33UUB162700" is the MGRS coordinate with accuracy of 100 meters.
+	- 33 is the utm zone number
+	- U is the utm zone letter
+	- UB is the 100-km grid letter
+	- 162 is the easting
+	- 700 is the northing
+
+See also
+ - [USNG]
+ - https://en.wikipedia.org/wiki/United_States_National_Grid
+
+*/
 type MGRS string
 
 // String returns the stringified MGRS object
+/*
+For the city of Roskilde: "33UUB162700"
+*/
 func (mgrs MGRS) String() string {
 	return string(mgrs)
 }
 
 /*
-ToLL converts MGRS/UTM to Lon Lat.
+ToLL converts MGRS to latitude longitude.
 */
 func (mgrs MGRS) ToLL() (LL, int, error) {
 
@@ -33,6 +51,8 @@ func (mgrs MGRS) ToLL() (LL, int, error) {
 
 	return ll, accuracy, nil
 }
+
+// ToUSNG converts MGRS to USNG.
 
 func (mgrs MGRS) ToUSNG() USNG {
 	zoneGrid := mgrs[0:3]

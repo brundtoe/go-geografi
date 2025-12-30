@@ -1,5 +1,10 @@
 # Changelog
 
+## 30. december 2025
+
+Ændringer
+- Opdateret dokumentationen
+
 ## 29. december 2025
 
 Ændringer:

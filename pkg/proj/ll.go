@@ -12,7 +12,11 @@ type LL struct {
 }
 
 /*
-String returns the stringified LL object (order according to ISO-6709, precision 0.11 meter).
+String returns the stringified LL object.
+
+The order of the coordinates is latitude, longitude in degrees (order according to ISO-6709, precision 0.11 meter).
+
+	For the city of Holstebro: 56.366667 8.616667
 */
 func (ll LL) String() string {
 
@@ -33,8 +37,9 @@ func (ll LL) validateLL() (string, error) {
 }
 
 /*
-ToMGRS converts Lon Lat to MGRS.
-accuracy holds the wanted accuracy in meters. Possible values are 1, 10, 100, 1000 or 10.000 meters.
+ToMGRS converts latitude longitude to MGRS
+
+The accuracy holds the wanted accuracy in meters. Possible values are 1, 10, 100, 1000 or 10.000 meters.
 */
 func (ll LL) ToMGRS(accuracy int) (MGRS, error) {
 
@@ -49,8 +54,9 @@ func (ll LL) ToMGRS(accuracy int) (MGRS, error) {
 }
 
 /*
-ToUSNG converts Lon Lat to USNG.
-accuracy holds the wanted accuracy in meters. Possible values are 1, 10, 100, 1000 or 10.000 meters.
+ToUSNG converts latitude longitude to USNG.
+
+The accuracy holds the wanted accuracy in meters. Possible values are 1, 10, 100, 1000 or 10.000 meters.
 */
 func (ll LL) ToUSNG(accuracy int) (USNG, error) {
 	str, err := ll.validateLL()
@@ -62,7 +68,7 @@ func (ll LL) ToUSNG(accuracy int) (USNG, error) {
 }
 
 /*
-ToUTM converts Lon Lat to UTM.
+ToUTM converts latitude longitude to UTM.
 */
 func (ll LL) ToUTM() UTM {
 

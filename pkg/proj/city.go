@@ -4,6 +4,7 @@ import (
 	"strconv"
 )
 
+// City csv columns used to map csv record to City struct
 const (
 	_Name = iota + 1
 	_Zip
@@ -21,6 +22,21 @@ const (
 	_Northing
 )
 
+// City
+/*
+City struct is used to store city data which are loaded from a csv file.
+
+The fields
+ - Geoloc
+ - Utm
+ - Usng
+ - Mgrs
+are used in the transformations.
+
+When a Geolog is transformed to UTM the values in UTM are used to validate the results within an expected error margin.
+
+
+*/
 type City struct {
 	Name         string
 	Zip          string
@@ -36,6 +52,7 @@ type City struct {
 	North        int64
 }
 
+// BuildCity builds a City struct from a csv record
 func (city *City) BuildCity(koord []string) {
 	city.Name = koord[_Name]
 	city.Zip = koord[_Zip]
