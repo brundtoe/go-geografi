@@ -11,68 +11,130 @@ import (
 
 func ExampleUTM_ToLL() {
 
-	utm := UTM{ZoneNumber: 23, ZoneLetter: 'K', Easting: 611733.14, Northing: 7800614.37}
+	utm := UTM{ZoneNumber: 32, ZoneLetter: 'U', Easting: 489092.85, Northing: 6101296.46}
 	ll, err := utm.ToLL()
 	if err != nil {
 		log.Fatalf("error <%v> at utm.ToLL()", err)
 	}
-	fmt.Printf("%s -> %s\n", utm, ll)
+	fmt.Printf("Bredebro: %s -> %s\n", utm, ll)
 	// Output:
-	// 23K 611733.14 7800614.37 -> -19.887495 -43.932663
-}
-
-func ExampleLL_ToUTM() {
-
-	ll := LL{Lon: -115.08209766, Lat: 36.23612346}
-	utm := ll.ToUTM()
-	fmt.Printf("%s -> %s\n", ll, utm)
-	// Output:
-	// 36.236123 -115.082098 -> 11S 672349.00 4011844.00
+	// Bredebro: 32U 489092.85 6101296.46 -> 55.058337 8.829244
 }
 
 func ExampleUTM_ToMGRS() {
 
-	utm := UTM{ZoneNumber: 31, ZoneLetter: 'U', Easting: 700373, Northing: 5704554}
+	utm := UTM{ZoneNumber: 32, ZoneLetter: 'V', Easting: 594857.92, Northing: 6399059.92}
 	accuracy := 1 // meters
 	mgrs := utm.ToMGRS(accuracy)
-	fmt.Printf("%s -> %s\n", utm, mgrs)
+	fmt.Printf("Skagen: %s -> %s\n", utm, mgrs)
 	// Output:
-	// 31U 700373.00 5704554.00 -> 31UGT0037304554
+	// Skagen: 32V 594857.92 6399059.92 -> 32VNJ9485799059
 }
 
-func ExampleMGRS_ToUTM() {
+func ExampleUTM_ToUSNG() {
 
-	mgrs := MGRS("32ULC989564")
-	utm, accuracy, err := mgrs.ToUTM()
-	if err != nil {
-		log.Fatalf("error <%v> at mgrs.ToUTM()", err)
-	}
-	fmt.Printf("%s -> %s (accuracy %d meters)\n", mgrs, utm, accuracy)
+	utm := UTM{ZoneNumber: 32, ZoneLetter: 'V', Easting: 594857.92, Northing: 6399059.92}
+	accuracy := 1 // meters
+	mgrs := utm.ToUSNG(accuracy)
+	fmt.Printf("Skagen: %s -> %s\n", utm, mgrs)
 	// Output:
-	// 32ULC989564 -> 32U 398900.00 5756400.00 (accuracy 100 meters)
+	// Skagen: 32V 594857.92 6399059.92 -> 32V NJ 94857 99059
+}
+
+func ExampleLL_ToUTM() {
+
+	ll := LL{Lon: 9.639181, Lat: 56.982376}
+	utm := ll.ToUTM()
+	fmt.Printf("Nibe: %s -> %s\n", ll, utm)
+	// Output:
+	// Nibe: 56.982376 9.639181 -> 32V 538846.91 6315605.80
 }
 
 func ExampleLL_ToMGRS() {
 
-	ll := LL{Lon: -88.53, Lat: 51.95}
+	ll := LL{Lon: 10.236330, Lat: 55.098237}
 	accuracy := 10 // meters
 	mgrs, err := ll.ToMGRS(accuracy)
 	if err != nil {
 		log.Fatalf("error <%v> at ll.ToMGRS()", err)
 	}
-	fmt.Printf("%s -> %s (accuracy %d meters)\n", ll, mgrs, accuracy)
+	fmt.Printf("Svendborg: %s -> %s (accuracy %d meters)\n", ll, mgrs, accuracy)
 	// Output:
-	// 51.950000 -88.530000 -> 16UCC94855658 (accuracy 10 meters)
+	// Svendborg: 55.098237 10.236330 -> 32UNG78890642 (accuracy 10 meters)
+}
+
+func ExampleLL_ToUSNG() {
+
+	ll := LL{Lon: 10.236330, Lat: 55.098237}
+	accuracy := 10 // meters
+	mgrs, err := ll.ToUSNG(accuracy)
+	if err != nil {
+		log.Fatalf("error <%v> at ll.ToMGRS()", err)
+	}
+	fmt.Printf("Svendborg: %s -> %s (accuracy %d meters)\n", ll, mgrs, accuracy)
+	// Output:
+	// Svendborg: 55.098237 10.236330 -> 32U NG 7889 0642 (accuracy 10 meters)
+}
+
+func ExampleMGRS_ToUTM() {
+
+	mgrs := MGRS("33UVB98231797")
+	utm, accuracy, err := mgrs.ToUTM()
+	if err != nil {
+		log.Fatalf("error <%v> at mgrs.ToUTM()", err)
+	}
+	fmt.Printf("Gudhjem: %s -> %s (accuracy %d meters)\n", mgrs, utm, accuracy)
+	// Output:
+	// Gudhjem: 33UVB98231797 -> 33U 498230.00 6117970.00 (accuracy 10 meters)
 }
 
 func ExampleMGRS_ToLL() {
 
-	mgrs := MGRS("11SPA7234911844")
+	mgrs := MGRS("33UUB162700")
 	ll, accuracy, err := mgrs.ToLL()
 	if err != nil {
 		log.Fatalf("error <%v> at mgrs.ToLL()", err)
 	}
-	fmt.Printf("%s (with accuracy %d meters) -> %s\n", mgrs, accuracy, ll)
+	fmt.Printf("Roskilde: %s (with accuracy %d meters) -> %s\n", mgrs, accuracy, ll)
 	// Output:
-	// 11SPA7234911844 (with accuracy 1 meters) -> 36.236123 -115.082098
+	// Roskilde: 33UUB162700 (with accuracy 100 meters) -> 55.641059 12.079514
+}
+
+func ExampleMGRS_ToUSNG() {
+
+	mgrs := MGRS("33UVB98231797")
+	usng := mgrs.ToUSNG()
+	fmt.Printf("Gudhjem: %s -> %s\n", mgrs, usng)
+	// Output:
+	// Gudhjem: 33UVB98231797 -> 33U VB 9823 1797
+}
+
+func ExampleUSNG_ToMGRS() {
+	usng := USNG("33U VB 98232 17975")
+	mgrs := usng.ToMGRS()
+	fmt.Printf("Gudhjem: %s -> %s\n", usng, mgrs)
+	// Output:
+	// Gudhjem: 33U VB 98232 17975 -> 33UVB9823217975
+}
+
+func ExampleUSNG_ToUTM() {
+	usng := USNG("32V MJ 81303 12511")
+	utm, accuracy, err := usng.ToUTM()
+	if err != nil {
+		log.Fatalf("error <%v> at usng.ToUTM()", err)
+	}
+	fmt.Printf("Thisted: %s -> %s (accuracy %d meters)\n", usng, utm, accuracy)
+	// Output:
+	// Thisted: 32V MJ 81303 12511 -> 32V 481303.00 6312511.00 (accuracy 1 meters)
+}
+
+func ExampleUSNG_ToLL() {
+	usng := USNG("32V MJ 81303 12511")
+	ll, accuracy, err := usng.ToLL()
+	if err != nil {
+		log.Fatalf("error <%v> at usng.ToLL()", err)
+	}
+	fmt.Printf("Thisted: %s (with accuracy %d meters) -> %s\n", usng, accuracy, ll)
+	// Output:
+	// Thisted: 32V MJ 81303 12511 (with accuracy 1 meters) -> 56.955828 8.692583
 }

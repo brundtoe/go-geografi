@@ -41,7 +41,6 @@ func (mgrs MGRS) ToUSNG() USNG {
 	digits := len(rest) / 2
 	east := mgrs[5 : 5+digits]
 	north := mgrs[5+digits:]
-	fmt.Printf("digits = %d\n", digits)
 	return USNG(zoneGrid + " " + kmkv + " " + east + " " + north)
 
 }
